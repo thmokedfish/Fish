@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using UnityEngine.UI;
 
 public class FishSpawner : MonoBehaviour
 {
@@ -16,25 +16,16 @@ public class FishSpawner : MonoBehaviour
     private List<List<FishData>> depthList = new List<List<FishData>>();
     private List<List<JellyData>> jellyDepthList = new List<List<JellyData>>();
     public FishMove targetPrefab; //用于传递给pool
+    public Text text;
     private void Start()
     {
         pool = new Pool<FishMove>(targetPrefab);
-        LoadJson();
+        LoadedData = DataManager.Instance.LoadedData;
         InitDepthLists();
         ShowLoadedData();
          RandomSpawnFish(2, Vector3.zero);
-         RandomSpawnFish(1, Vector3.zero);
+        RandomSpawnFish(1, Vector3.zero);
 
-    }
-    private void LoadJson()
-    {
-        string filePath = Path.Combine(Application.streamingAssetsPath, LocalPath);
-        if (!File.Exists(filePath))
-        {
-            Debug.LogError("incorrect file path!");
-            return;
-        }
-        JsonReader.LoadJson<FishDataList>(filePath,out LoadedData);
     }
     private void InitDepthLists()
     {
@@ -94,13 +85,18 @@ public class FishSpawner : MonoBehaviour
 
     public void SpawnFish(FishData data,Vector3 center)
     {
+        string fishname = data.name;
+        GameObject fishPrefab = Resources.Load<GameObject>("Fish/" + fishname);
+        if (fishPrefab == null)
+        {
+            Debug.Log(fishname + " prefab not exist!");
+            return; }
+
         float x = Random.Range(0, range);
         float z = range - x;
         int r = Random.Range(0, 2);
-        Debug.Log(r);
         if (r == 0) { x *= -1; }
         r = Random.Range(0, 2);
-        Debug.Log(r);
         if (r == 0) { z *= -1; }
         Vector3 pos = new Vector3(center.x + x, center.y + Random.Range(-range, range), center.z + z);
 
@@ -109,11 +105,10 @@ public class FishSpawner : MonoBehaviour
         target.transform.rotation = Quaternion.LookRotation(new Vector3(-x, 0, -z), Vector3.up);
         target.data = data;
 
-        string fishname = data.name;
         int fishNum = Random.Range(data.minPopulation, data.maxPopulation + 1);
         for (int i = 0; i < fishNum; i++)
         {
-            GameObject fish = Instantiate(Resources.Load<GameObject>("Fishes/" + fishname),pos,Quaternion.identity);  //后续加入范围内根据target角度随机position,以及多条生成防止重合
+            GameObject fish = GameObject.Instantiate(fishPrefab,pos,Quaternion.identity);  //后续加入范围内根据target角度随机position,以及多条生成防止重合
                                                                                               //FishMove move=fish.AddComponent<FishMove>();
                                                                                               // move.data = data;
             FollowFishMove follow = fish.GetComponent<FollowFishMove>();
@@ -133,7 +128,8 @@ public class FishSpawner : MonoBehaviour
         Debug.Log("jelly num:" + LoadedData.jellyDatas.Length);
         foreach (FishData data in LoadedData.datalist)
         {
-            Debug.Log(data.name + " " + data.info);
+            Debug.Log(data.name);
+            text.text += data.info;
         }
     }
 }

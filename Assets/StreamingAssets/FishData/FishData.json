@@ -1,30 +1,33 @@
 {
   "datalist": [
+    
     {
-      "name": "s",
-      "info": "haha",
-      "rarity": "1",
-      "depth": "1",
-      "moveRate": "4",
-      "shakeFrequency": "270",
-      "shakeAmplitude": "0.5",
-      "rotateRange": "30",
-      "rotateInterval": "3",
-      "minPopulation": "1",
-      "maxPopulation": "1"
-    },
-    {
-      "name": "bb",
-      "info": "xixi",
+      "name": "butterflyfish",
       "rarity": "1",
       "depth": "2",
-      "moveRate": "3",
-      "shakeFrequency": "180",
+      "moveRate": "10",
+      "shakeFrequency": "270",
+      "shakeAmplitude": "0.2",
+      "rotateRange": "40",
+      "rotateInterval": "2",
+      "minPopulation": "1",
+      "maxPopulation": "5",
+      "briefInfo": "蝴蝶鱼科为辐鳍鱼纲鲈形目的一个科。蝴蝶鱼俗称热带鱼，是近海暖水性小型珊瑚礁鱼类，体型最大的细纹蝴蝶鱼可达30多厘米。蝴蝶鱼身体侧扁，可以在珊瑚丛中敏捷地穿梭。",
+      "info": "本科鱼种体型呈菱形或近于椭圆形，且非常侧扁。口小，开于吻端，略能伸缩。体被中形或小型之弱栉鳞或圆鳞，腹鳍下方有腋鳞。侧线1条，完全且呈弧形，但不甚明显。齿细长，在上下颌或刷毛状狭长带，腭骨无齿，前鳃盖缘平滑，幼鱼可能呈锯齿或有棘，但成长后即消失。幼鱼因头部被有骨质板称之Tholichthys。蝶鱼的体色也会随成长而略有变化。但不像棘蝶鱼变化那么大。有趣的是，大多数蝶鱼小时，它们的背鳍或身体后方常有一伪装用的眼斑，这个眼斑到成鱼后即消失。它的作用是用来蒙骗掠食者，使他们误将尾部当做头部而发动错误的攻击。此外，大部分蝶鱼在眼睛上还有一条黑色纵带穿过，亦有将头部伪装以使欺敌之作用。只有少数种类的体型从小到大会发生改变。"
+    },
+    {
+      "name": "carp",
+      "rarity": "1",
+      "depth": "1",
+      "moveRate": "10",
+      "shakeFrequency": "0",
       "shakeAmplitude": "0",
-      "rotateRange": "0",
+      "rotateRange": "45",
       "rotateInterval": "3",
       "minPopulation": "1",
-      "maxPopulation": "1"
+      "maxPopulation": "1",
+      "briefInfo": "红褐鲤（学名：Cyprinus rubrofuscus）通称为鲤鱼，又名阿穆尔鲤、华南鲤、青鲤等，是鲤科鲤属的一种鱼类，广泛分布于东亚的淡水河流中",
+      "info": "鲤鱼，中文别名鲤拐子、鲤子、毛子，红鱼。鲤科（Cyprinidae）中粗强的褐色鱼，学名Cyprinus carpio。原产亚洲，后引进欧洲、北美以及其他地区，杂食性。鲤鱼鳞大，上腭两侧各有二须，单独或成小群地生活于平静且水草丛生的泥底的池塘、湖泊、河流中。在水域不大的地方有洄游的习性."
     }
   ],
   "jellyDatas": [

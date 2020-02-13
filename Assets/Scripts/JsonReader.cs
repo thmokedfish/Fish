@@ -12,7 +12,7 @@ public class JsonReader
             container = default(T);
             return;
         }
-        string jsonData = File.ReadAllText(filePath);
+        string jsonData = File.ReadAllText(filePath,System.Text.Encoding.GetEncoding("gb2312"));//默认中文乱码
         container = JsonUtility.FromJson<T>(jsonData);
     }
 }
