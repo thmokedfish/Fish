@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class FishSpawner : MonoBehaviour
 {
     public string LocalPath = "FishData/FishData.json";
-    public int depthCount = 3;  //比如maxDepth为3,则包括0,1,2三个深度
+    public float[] yDivide;  //每个深度的y深度区间，Length-1等于深度总数(至少为1)
+                            //例如length=3,值为10 0 -10,则深度1的鱼在10到0直接随机生成，深度2在0到-10
     public float range;
     public float fishInterval;
     private Pool<FishMove> pool;
@@ -19,6 +20,7 @@ public class FishSpawner : MonoBehaviour
     public Text text;
     private void Start()
     {
+        
         pool = new Pool<FishMove>(targetPrefab);
         LoadedData = DataManager.Instance.LoadedData;
         InitDepthLists();
@@ -30,7 +32,7 @@ public class FishSpawner : MonoBehaviour
     private void InitDepthLists()
     {
         //二维lists初始化
-        for (int i = 0; i < depthCount; i++)
+        for (int i = 0; i < yDivide.Length-1; i++)
         {
             depthList.Add(new List<FishData>());
             jellyDepthList.Add(new List<JellyData>());
@@ -38,26 +40,26 @@ public class FishSpawner : MonoBehaviour
         //为每个list添加成员
         foreach (FishData data in LoadedData.datalist)
         {
-            if (data.depth >= depthCount || data.depth < 0)
+            if (data.depth >= yDivide.Length - 1 || data.depth < 0)
             {
                 Debug.LogError("depth error");
-                data.depth = depthCount - 1;
+                data.depth = yDivide.Length - 2;
             }
             depthList[data.depth].Add(data);
         }
         foreach(JellyData data in LoadedData.jellyDatas)
         {
-            if (data.depth >= depthCount || data.depth < 0)
+            if (data.depth >= yDivide.Length - 1 || data.depth < 0)
             {
                 Debug.LogError("depth error");
-                data.depth = depthCount - 1;
+                data.depth = yDivide.Length - 2;
             }
             jellyDepthList[data.depth].Add(data);
         }
     }
     public void RandomSpawnFish(int depth, Vector3 centerPos)
     {
-        if(depth>=depthCount||depth<0)
+        if(depth>= yDivide.Length - 1 || depth<0)
         {
             Debug.LogError("depth out of range");
             return;
@@ -69,7 +71,7 @@ public class FishSpawner : MonoBehaviour
 
     public void SpawnFish(int depth,int index,Vector3 center)
     {
-        if (depth >= depthCount || depth < 0)
+        if (depth >= yDivide.Length - 1 || depth < 0)
         {
             Debug.LogError("depth out of range");
             return;
@@ -98,7 +100,7 @@ public class FishSpawner : MonoBehaviour
         if (r == 0) { x *= -1; }
         r = Random.Range(0, 2);
         if (r == 0) { z *= -1; }
-        Vector3 pos = new Vector3(center.x + x, center.y + Random.Range(-range, range), center.z + z);
+        Vector3 pos = new Vector3(center.x + x, center.y + Random.Range(yDivide[data.depth], yDivide[data.depth+1]), center.z + z);
 
         //spawn target
         FishMove target = pool.Spawn();

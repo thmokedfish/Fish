@@ -15,14 +15,17 @@ public class Scanning : MonoBehaviour
         set 
         {
             _curValue = value;
-             EventManager.Instance.ValueChangeEvents.TryGetValue("OnScanValueChange", out OnScanValueChange);
-             OnScanValueChange?.Invoke(CurValue/ScanTime);
+            EventManager.Instance.InvokeValueChangeEvent("OnScanValueChange", _curValue/ScanTime);
         } 
     }
     public float maxDistance;
     private RaycastHit hit;
     private Transform fish;
     public OnValueChange OnScanValueChange;
+
+    private void Start()
+    {
+    }
     private void Update()
     {
         Scan();
@@ -78,5 +81,6 @@ public class Scanning : MonoBehaviour
             return;
         }
         FishData fish = follow.target.data;
+        Debug.Log(fish.info);
     }
 }

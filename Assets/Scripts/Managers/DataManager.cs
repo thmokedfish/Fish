@@ -25,7 +25,17 @@ public class DataManager : MonoBehaviour
         InitDataDic();
     }
 
+    private void Start()
+    {
+        // EventManager.Instance.SetStringEvents.Add("name",)
+        EventManager.Instance.AddReferenceEvents("OnScanFinish", AddCapturedFish);
+    }
 
+    private void AddCapturedFish(object fishName)
+    {
+        string name = fishName as string;
+        capturedNameSet.Add(name);
+    }
 
     private void LoadJson()
     {

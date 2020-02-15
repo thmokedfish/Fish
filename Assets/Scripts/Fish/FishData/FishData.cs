@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 public enum Rarity
 {
-    common,
-    normal,
-    rare
+    common=0,
+    normal=1,
+    rare=2
 }
 
 public class FishDataBase
 {
     public string name;
     public string info;
-    //稀有度
+    //稀有度,最小为0
     public Rarity rarity;
-    //海域深度
+    //海域深度,最小为0
     public int depth;
 
     public int minPopulation = 1;//种群参数。1为单独生成

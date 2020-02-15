@@ -9,6 +9,7 @@ public class DeviceMovement : MonoBehaviour
     public bool rbMood;
     public float speed = 10;
     public float minVelocity = 0.05f;
+    private bool OnUI = false;
     private void Start()
     {
         velocity = Vector3.zero;
@@ -19,13 +20,19 @@ public class DeviceMovement : MonoBehaviour
         {
             rbMood = false;
         }
+
+        EventManager.Instance.AddValueChangeEvent("Sensitivity", ChangeSensitivity);
+        EventManager.Instance.AddValueChangeEvent("CursorHide", HideCursor);
     }
     void Update()
     {
         //CheckMove();
         CheckMoveFromInput();
 
-        CheckRotate();
+        if (!OnUI)
+        {
+            CheckRotate();
+        }
     }
 
     private void CheckMoveFromInput()
@@ -60,18 +67,40 @@ public class DeviceMovement : MonoBehaviour
     public float minimumVert = -45.0f;//垂直旋转的最小角度
     public float maximumVert = 45.0f;//垂直旋转的最小角度
     private float _rotationX = 0;//为垂直角度声明一个私有变量
+
+
+    private void HideCursor(float val)
+    {
+        if(val>0)
+        {
+            OnUI = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
+        }
+        else
+        {
+            OnUI = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+    }
+    private void ChangeSensitivity(float sense)
+    {
+        sensitivityHor = 6*sense;
+        sensitivityVert =6*sense;
+    }
     private void CheckRotate()
     {
         
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         _rotationX -= Input.GetAxis("Mouse Y") * sensitivityVert;
         _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);//限制角度大小
         float delta = Input.GetAxis("Mouse X") * sensitivityHor;//设置水平旋转的变化量
         float rotationY = transform.localEulerAngles.y + delta;//原来的角度加上变化量
         transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);//相对于全局坐标空间的角度
         return;
-#endif
-
+//#endif
+/*
 #if UNITY_ANDROID
         if(!transform.parent)
         {
@@ -81,7 +110,7 @@ public class DeviceMovement : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation,q, 0.5f);
 #endif
 
-
+*/
     }
 
     private void InitParent()
@@ -111,6 +140,7 @@ public class DeviceMovement : MonoBehaviour
         }
         transform.Translate(velocity);
     }
+    /*
     private void OnGUI()
     {
         // GUI.Label(new Rect(500, 450, 400, 80), "input Acceleration:" + Input.acceleration);
@@ -123,6 +153,7 @@ public class DeviceMovement : MonoBehaviour
         GUI.Label(new Rect(500, 400, 400, 80), "android");
 #endif
     }
+    */
     private Quaternion GyroToUnity(Quaternion q)
     {
         return new Quaternion(q.x, q.y, -q.z,- q.w);

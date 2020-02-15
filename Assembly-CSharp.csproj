@@ -70,7 +70,6 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\Scripts\Fish\FishData\CapturedList.cs" />
     <Compile Include="Assets\Scripts\Fish\FishData\FishData.cs" />
     <Compile Include="Assets\Scripts\Fish\FishData\FishDataList.cs" />
     <Compile Include="Assets\Scripts\Fish\FishMove.cs" />
@@ -86,7 +85,11 @@
     <Compile Include="Assets\Scripts\Pool.cs" />
     <Compile Include="Assets\Scripts\PostEffect.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\UI\EscPanel.cs" />
     <Compile Include="Assets\Scripts\UI\EventManager.cs" />
+    <Compile Include="Assets\Scripts\UI\PreferencePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\ScanPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\StartScene\StartPanel.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\Water.cs" />
     <None Include="Assets\Shaders\AlphaSelfIllum_NoFog.shader" />

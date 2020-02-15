@@ -4,19 +4,51 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
-    public Image ScanCircle;
-    void Start()
+    [Header("Panels")]
+    public GameObject EscPanel;
+
+    private Stack<GameObject> UIPanels = new Stack<GameObject>();
+    public static UIManager Instance;
+
+
+    private void Awake()
     {
-        EventManager.Instance.ValueChangeEvents.Add("OnScanValueChange", SetScanCircle);
+        if(Instance==null)
+        Instance = this;
     }
 
+    private void Start()
+    {
+        EventManager.Instance.InvokeValueChangeEvent("CursorHide", 1);
+    }
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (UIPanels.Count == 0)
+            {
+                SetActiveUI(EscPanel);
+            }
+            else
+            {
+                GameObject panel = UIPanels.Pop();
+                panel.SetActive(false);
+            }
+            if(UIPanels.Count==0)
+            {
+                EventManager.Instance.InvokeValueChangeEvent("CursorHide", 1);
+            }
+            else
+            {
+                EventManager.Instance.InvokeValueChangeEvent("CursorHide", 0);
+            }
+        }
     }
 
-    void SetScanCircle(float value)
+    public void SetActiveUI(GameObject go)
     {
-        ScanCircle.fillAmount = value;
+        go.SetActive(true);
+        UIPanels.Push(go);
     }
+
 }
