@@ -17,7 +17,6 @@ public class FishSpawner : MonoBehaviour
     private List<List<FishData>> depthList = new List<List<FishData>>();
     private List<List<JellyData>> jellyDepthList = new List<List<JellyData>>();
     public FishMove targetPrefab; //用于传递给pool
-    public Text text;
     private void Start()
     {
         
@@ -131,7 +130,6 @@ public class FishSpawner : MonoBehaviour
         foreach (FishData data in LoadedData.datalist)
         {
             Debug.Log(data.name);
-            text.text += data.info;
         }
     }
 }

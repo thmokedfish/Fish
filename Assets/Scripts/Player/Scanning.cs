@@ -82,5 +82,6 @@ public class Scanning : MonoBehaviour
         }
         FishData fish = follow.target.data;
         Debug.Log(fish.info);
+        EventManager.Instance.InvokeReferenceEvents("OnScanFinish", fish);
     }
 }

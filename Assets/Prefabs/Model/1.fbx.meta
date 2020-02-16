@@ -1,0 +1,314 @@
+fileFormatVersion: 2
+guid: d1ebff04682f37a429aed696cd8d0cfd
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: group
+    100004: group1
+    100006: group2
+    100008: group3
+    100010: group4
+    100012: pasted__group
+    100014: pasted__group 1
+    100016: pasted__group1
+    100018: pasted__group2
+    100020: pasted__group3
+    100022: pasted__pasted__group
+    100024: pasted__pasted__pasted__rock_01
+    100026: pasted__pasted__rock_01
+    100028: pasted__pasted__rock_01 1
+    100030: pasted__pasted__rock_02
+    100032: pasted__pasted__rock_03
+    100034: pasted__rock_01
+    100036: pasted__rock_01 1
+    100038: pasted__rock_02
+    100040: pasted__rock_02 1
+    100042: pasted__rock_03
+    100044: pasted__rock_03 1
+    100046: pasted__rock_04
+    100048: pasted__rock_05
+    100050: rock_01
+    100052: rock_02
+    100054: rock_03
+    100056: rock_04
+    100058: rock_05
+    400000: //RootNode
+    400002: group
+    400004: group1
+    400006: group2
+    400008: group3
+    400010: group4
+    400012: pasted__group
+    400014: pasted__group 1
+    400016: pasted__group1
+    400018: pasted__group2
+    400020: pasted__group3
+    400022: pasted__pasted__group
+    400024: pasted__pasted__pasted__rock_01
+    400026: pasted__pasted__rock_01
+    400028: pasted__pasted__rock_01 1
+    400030: pasted__pasted__rock_02
+    400032: pasted__pasted__rock_03
+    400034: pasted__rock_01
+    400036: pasted__rock_01 1
+    400038: pasted__rock_02
+    400040: pasted__rock_02 1
+    400042: pasted__rock_03
+    400044: pasted__rock_03 1
+    400046: pasted__rock_04
+    400048: pasted__rock_05
+    400050: rock_01
+    400052: rock_02
+    400054: rock_03
+    400056: rock_04
+    400058: rock_05
+    2100000: lambert2
+    2100002: lambert3
+    2100004: lambert4
+    2100006: lambert5
+    2100008: lambert6
+    2100010: pasted__lambert2
+    2100012: pasted__lambert3
+    2100014: pasted__lambert4
+    2100016: pasted__pasted__lambert2
+    2100018: pasted__lambert5
+    2100020: pasted__lambert6
+    2100022: pasted__lambert7
+    2100024: pasted__lambert8
+    2100026: pasted__lambert9
+    2100028: pasted__pasted__lambert3
+    2100030: pasted__pasted__lambert4
+    2100032: pasted__pasted__lambert5
+    2100034: pasted__pasted__pasted__lambert2
+    2300000: pasted__pasted__pasted__rock_01
+    2300002: pasted__pasted__rock_01
+    2300004: pasted__pasted__rock_01 1
+    2300006: pasted__pasted__rock_02
+    2300008: pasted__pasted__rock_03
+    2300010: pasted__rock_01
+    2300012: pasted__rock_01 1
+    2300014: pasted__rock_02
+    2300016: pasted__rock_02 1
+    2300018: pasted__rock_03
+    2300020: pasted__rock_03 1
+    2300022: pasted__rock_04
+    2300024: pasted__rock_05
+    2300026: rock_01
+    2300028: rock_02
+    2300030: rock_03
+    2300032: rock_04
+    2300034: rock_05
+    3300000: pasted__pasted__pasted__rock_01
+    3300002: pasted__pasted__rock_01
+    3300004: pasted__pasted__rock_01 1
+    3300006: pasted__pasted__rock_02
+    3300008: pasted__pasted__rock_03
+    3300010: pasted__rock_01
+    3300012: pasted__rock_01 1
+    3300014: pasted__rock_02
+    3300016: pasted__rock_02 1
+    3300018: pasted__rock_03
+    3300020: pasted__rock_03 1
+    3300022: pasted__rock_04
+    3300024: pasted__rock_05
+    3300026: rock_01
+    3300028: rock_02
+    3300030: rock_03
+    3300032: rock_04
+    3300034: rock_05
+    4300000: rock_01
+    4300002: rock_02
+    4300004: rock_03
+    4300006: rock_04
+    4300008: rock_05
+    4300010: pasted__rock_01
+    4300012: pasted__rock_02
+    4300014: pasted__rock_03
+    4300016: pasted__pasted__rock_01
+    4300018: pasted__rock_01
+    4300020: pasted__rock_02
+    4300022: pasted__rock_03
+    4300024: pasted__rock_04
+    4300026: pasted__rock_05
+    4300028: pasted__pasted__rock_01
+    4300030: pasted__pasted__rock_02
+    4300032: pasted__pasted__rock_03
+    4300034: pasted__pasted__pasted__rock_01
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 4078da53c38d169498f0341c8faf464b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: d43a36d283c89c54796e2d889b2333e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 5aeef61e7c4910c42907c4c5b392bdfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: 683f961e62113fa4f815bfac1cc4de05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert6
+    second: {fileID: 2100000, guid: c26eebddfcda7494e9aec53949eec3c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert2
+    second: {fileID: 2100000, guid: 5f85599c95d78794d9c1baf68cc341a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert3
+    second: {fileID: 2100000, guid: 34935b803854e5d4194eefbc02cfd246, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert4
+    second: {fileID: 2100000, guid: 8ff43e1ae30c5b1498f7839365c89ffd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert5
+    second: {fileID: 2100000, guid: a1565c9e761efc6408abccefedcda89d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert6
+    second: {fileID: 2100000, guid: 41ea74ba90560754190d890f1a89c1b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert7
+    second: {fileID: 2100000, guid: 5b21db3ba5205db46b74a63b2ce27afc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert8
+    second: {fileID: 2100000, guid: 2a16b95fe34726f4bbfbd0e25ee37b76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert9
+    second: {fileID: 2100000, guid: d357bcd7e28c2d24495bf1c962d8b3d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__pasted__lambert2
+    second: {fileID: 2100000, guid: 0b88054955ebfef46811104ea57bbd16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__pasted__lambert3
+    second: {fileID: 2100000, guid: c8eb4636ddfdb7a44895a825cedf03a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__pasted__lambert4
+    second: {fileID: 2100000, guid: b91dc31facfa9c54db4e60b5f8adbfdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__pasted__lambert5
+    second: {fileID: 2100000, guid: 5568de85ab2f1f24bb8550bc1eac2f73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__pasted__pasted__lambert2
+    second: {fileID: 2100000, guid: e098257896fc6c840adfb8e201503af0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 120
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.5
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

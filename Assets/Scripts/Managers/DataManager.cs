@@ -10,6 +10,8 @@ public class DataManager : MonoBehaviour
     public Dictionary<string, FishDataBase> FishDataDictionary;
     public FishDataList LoadedData;
     public string LocalPath = "FishData/FishData.json";
+    [SerializeField]private int LatestCount = 3;
+    public Queue<FishData> LatestCaptured;
     private void Awake()
     {
         if (Instance == null)
@@ -23,6 +25,7 @@ public class DataManager : MonoBehaviour
         }
         LoadJson();
         InitDataDic();
+        LatestCaptured = new Queue<FishData>(LatestCount);
     }
 
     private void Start()
@@ -31,10 +34,15 @@ public class DataManager : MonoBehaviour
         EventManager.Instance.AddReferenceEvents("OnScanFinish", AddCapturedFish);
     }
 
-    private void AddCapturedFish(object fishName)
+    private void AddCapturedFish(object fishData)
     {
-        string name = fishName as string;
-        capturedNameSet.Add(name);
+        FishData data = fishData as FishData;
+        capturedNameSet.Add(data.name);
+        LatestCaptured.Enqueue(data);
+        if(LatestCaptured.Count>LatestCount)
+        {
+            LatestCaptured.Dequeue();
+        }
     }
 
     private void LoadJson()

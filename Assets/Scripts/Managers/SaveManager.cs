@@ -38,9 +38,13 @@ public class SaveManager:MonoBehaviour
         FileStream fileStream = File.Open(savePath, FileMode.Open);
         string[] loadedNames = bf.Deserialize(fileStream) as string[];
         HashSet<string> nameHashSet = new HashSet<string>();
-        for(int i=0;i<loadedNames.Length;i++)
+        for (int i = 0; i < loadedNames.Length; i++)
         {
-            Debug.Log("load "+loadedNames[i]); 
+            Debug.Log("load " + loadedNames[i]);
+            if(loadedNames[i]==null)
+            {
+                continue;
+            }
             if(DataManager.Instance.FishDataDictionary.ContainsKey(loadedNames[i]))
             {
                 nameHashSet.Add(loadedNames[i]);
@@ -57,7 +61,7 @@ public class SaveManager:MonoBehaviour
         int i = 0;
         foreach(string name in set)
         {
-            Debug.Log("save");
+            Debug.Log("save "+name);
             save[i] = name;
             i++;
         }

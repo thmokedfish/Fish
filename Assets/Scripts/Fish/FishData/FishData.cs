@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 public enum Rarity
 {
-    common=0,
-    normal=1,
-    rare=2
+    Common=0,
+    Rare=1,
+    UnderProtection=2,
+    Endangered=3,
+    Extinct=4
 }
 
 public class FishDataBase
 {
     public string name;
     public string info;
+    //其实是中文名
+    public string briefInfo;
+
     //稀有度,最小为0
     public Rarity rarity;
     //海域深度,最小为0

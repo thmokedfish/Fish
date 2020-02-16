@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ScanPanel : MonoBehaviour
 {
     public Image ScanCircle;
+    public Text NameText;
+    public Text InfoText;
     private void Start()
     {
         EventManager.Instance.AddValueChangeEvent("OnScanValueChange", SetScanCircle);
@@ -15,8 +17,10 @@ public class ScanPanel : MonoBehaviour
     {
         ScanCircle.fillAmount = value;
     }
-    void ShowFishInfo(object fishName)
+    void ShowFishInfo(object fishData)
     {
-        string name = fishName as string;
+        FishData data =fishData  as FishData;
+        NameText.text = data.briefInfo;
+        InfoText.text = data.info;
     }
 }

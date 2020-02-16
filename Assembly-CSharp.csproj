@@ -85,8 +85,10 @@
     <Compile Include="Assets\Scripts\Pool.cs" />
     <Compile Include="Assets\Scripts\PostEffect.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\UI\BackButton.cs" />
     <Compile Include="Assets\Scripts\UI\EscPanel.cs" />
     <Compile Include="Assets\Scripts\UI\EventManager.cs" />
+    <Compile Include="Assets\Scripts\UI\LatelyFishPanel.cs" />
     <Compile Include="Assets\Scripts\UI\PreferencePanel.cs" />
     <Compile Include="Assets\Scripts\UI\ScanPanel.cs" />
     <Compile Include="Assets\Scripts\UI\StartScene\StartPanel.cs" />

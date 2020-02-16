@@ -27,28 +27,30 @@ public class UIManager : MonoBehaviour
         {
             if (UIPanels.Count == 0)
             {
-                SetActiveUI(EscPanel);
-            }
-            else
-            {
-                GameObject panel = UIPanels.Pop();
-                panel.SetActive(false);
-            }
-            if(UIPanels.Count==0)
-            {
-                EventManager.Instance.InvokeValueChangeEvent("CursorHide", 1);
-            }
-            else
-            {
+                SetPanelActive(EscPanel);
                 EventManager.Instance.InvokeValueChangeEvent("CursorHide", 0);
+            }
+            else
+            {
+                PopPanel();
             }
         }
     }
 
-    public void SetActiveUI(GameObject go)
+    public void SetPanelActive(GameObject go)
     {
         go.SetActive(true);
         UIPanels.Push(go);
     }
 
+    public void PopPanel()
+    {
+        GameObject panel = UIPanels.Pop();
+        panel.SetActive(false);
+        if (UIPanels.Count == 0)
+        {
+            EventManager.Instance.InvokeValueChangeEvent("CursorHide", 1);
+        }
+    }
+    
 }
