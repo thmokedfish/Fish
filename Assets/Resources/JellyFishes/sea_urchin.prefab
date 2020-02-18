@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7348129774333507809}
   - component: {fileID: 7348129774334310593}
   - component: {fileID: 7348129774335408641}
+  - component: {fileID: 2898767979598814653}
   m_Layer: 0
   m_Name: sea_urchin
   m_TagString: Fish
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7348129774333142209}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -47.950172, y: 25.086576, z: -61.29}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2898767979598814653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7348129774333142209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.455154, y: 16.365612, z: 16.116753}
+  m_Center: {x: -0.00000047683716, y: -0.0000004768373, z: 0}

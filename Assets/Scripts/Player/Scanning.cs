@@ -66,7 +66,7 @@ public class Scanning : MonoBehaviour
     {
         if (CurValue > 0)
         {
-            CurValue -= Time.deltaTime;
+            CurValue -= Time.deltaTime/2;
         }
         else
             CurValue = 0;

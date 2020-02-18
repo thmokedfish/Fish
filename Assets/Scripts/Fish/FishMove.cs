@@ -15,8 +15,12 @@ public class FishMove : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Rotate(data.rotateRange, data.rotateInterval));
         lastpos = transform.position;
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Rotate(data.rotateRange, data.rotateInterval));
     }
     private void Update()
     {
