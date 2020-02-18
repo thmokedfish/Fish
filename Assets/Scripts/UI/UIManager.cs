@@ -19,6 +19,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        Invoke("HideCursorAtStart", 0.05f);
+    }
+    private void HideCursorAtStart()
+    {
         EventManager.Instance.InvokeValueChangeEvent("CursorHide", 1);
     }
     void Update()

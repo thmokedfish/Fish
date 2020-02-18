@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Fish\FishMove.cs" />
     <Compile Include="Assets\Scripts\Fish\FishSpawner.cs" />
     <Compile Include="Assets\Scripts\Fish\FollowFishMove.cs" />
+    <Compile Include="Assets\Scripts\Fish\ResetFish.cs" />
     <Compile Include="Assets\Scripts\Fish\TextSpawner.cs" />
     <Compile Include="Assets\Scripts\JsonReader.cs" />
     <Compile Include="Assets\Scripts\Managers\DataManager.cs" />

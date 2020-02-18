@@ -23,30 +23,40 @@ public class DeviceMovement : MonoBehaviour
 
         EventManager.Instance.AddValueChangeEvent("Sensitivity", ChangeSensitivity);
         EventManager.Instance.AddValueChangeEvent("CursorHide", HideCursor);
+        rb = this.GetComponent<Rigidbody>();
     }
+    private Rigidbody rb;
     void Update()
     {
-        //CheckMove();
-        CheckMoveFromInput();
+        //CheckMoveFromInput();
 
         if (!OnUI)
         {
             CheckRotate();
         }
+        else
+        {
+            transform.localEulerAngles = new Vector3(_rotationX, _rotationY, 0);
+        }
+    }
+    private void FixedUpdate()
+    {
+        rb.velocity = transform.right * Input.GetAxis("Horizontal") * speed + transform.forward* Input.GetAxis("Vertical") * speed;
+            //new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
     }
 
     private void CheckMoveFromInput()
     {
+        /*
         if (Input.touchCount > 0)
         {
             this.transform.Translate(0, 0, Input.touches[0].deltaPosition.y*Time.deltaTime*speed,Space.Self);
             return;
         }
+        */
 
-#if UNITY_EDITOR
-        this.transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis("Vertical")*Time.deltaTime*speed, Space.Self);
-        return;
-#endif
+        Vector3 dir = new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical")  * speed)*Time.deltaTime;
+        this.transform.Translate(dir, Space.Self);
     }
 
 
@@ -67,7 +77,7 @@ public class DeviceMovement : MonoBehaviour
     public float minimumVert = -45.0f;//垂直旋转的最小角度
     public float maximumVert = 45.0f;//垂直旋转的最小角度
     private float _rotationX = 0;//为垂直角度声明一个私有变量
-
+    private float _rotationY = 0;//为垂直角度声明一个私有变量
 
     private void HideCursor(float val)
     {
@@ -96,8 +106,8 @@ public class DeviceMovement : MonoBehaviour
         _rotationX -= Input.GetAxis("Mouse Y") * sensitivityVert;
         _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);//限制角度大小
         float delta = Input.GetAxis("Mouse X") * sensitivityHor;//设置水平旋转的变化量
-        float rotationY = transform.localEulerAngles.y + delta;//原来的角度加上变化量
-        transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);//相对于全局坐标空间的角度
+        _rotationY =_rotationY + delta;//原来的角度加上变化量
+        transform.localEulerAngles = new Vector3(_rotationX, _rotationY, 0);//相对于全局坐标空间的角度
         return;
 //#endif
 /*

@@ -22,6 +22,8 @@ public class FishDataBase
 
     public int minPopulation = 1;//种群参数。1为单独生成
     public int maxPopulation = 1;//种群参数。1为单独生成
+
+    public int ID;
 }
 
 
