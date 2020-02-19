@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainPanel : MonoBehaviour
@@ -37,6 +38,7 @@ public class MainPanel : MonoBehaviour
     public GameObject exhibitionStand;
     public GameObject buttonParent;
     public Button buttonPrefab;
+    public Button returnButton;
 
     GameObject temp;
 
@@ -94,14 +96,23 @@ public class MainPanel : MonoBehaviour
         {
             Button go = GameObject.Instantiate(buttonPrefab);
             go.transform.SetParent(buttonParent.transform);
-            go.GetComponentInChildren<Text>().text = "    "+fishData[i].ID.ToString ()+"  "+fishData[i].briefInfo;
+            if (DataManager.Instance.fishNumber[i] == 1)
+            {
+                go.GetComponentInChildren<Text>().text = "    " + fishData[i].ID.ToString() + "  " + fishData[i].briefInfo;
+            }
+            else
+            {
+                go.GetComponentInChildren<Text>().text = "    " + fishData[i].ID.ToString() + "  " + "??????";
+            }
             int j = i;
             go.onClick.AddListener(() => Change(j));
             fishButton[i] = go;
         }
+        returnButton.onClick.AddListener(delegate () { SwitchScene(1); });
     }
     public void FishSet(int i)
     {
+        if (DataManager.Instance.fishNumber[i] == 0) return;
         temp = GameObject.Instantiate(fish[i], new Vector3(0, 2.5f, 0), Quaternion.identity);
         temp.GetComponent<DataNumber>().data = fishData[i];
         temp.transform.SetParent(exhibitionStand.transform);
@@ -135,5 +146,10 @@ public class MainPanel : MonoBehaviour
         }
         QuickSortRelax(a, j + 1, high);
         QuickSortRelax(a, low, i - 1);
+    }
+
+    public void SwitchScene(int index)
+    {
+        SceneManager.LoadScene(index);
     }
 }

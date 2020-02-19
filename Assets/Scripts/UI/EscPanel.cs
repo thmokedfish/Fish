@@ -15,6 +15,7 @@ public class EscPanel : MonoBehaviour
     {
         StartSceneButton.onClick.AddListener(delegate () { SwitchScene(0); });
         PreferenceButton.onClick.AddListener(delegate () { UIManager.Instance.SetPanelActive(PreferencePanel); });
+        CollectionSceneButton.onClick.AddListener(delegate () { SwitchScene(2); });
     }
 
     public void SwitchScene(int index)
