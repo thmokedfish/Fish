@@ -169,6 +169,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8854716437451325423}
   - component: {fileID: 8854716437459095593}
+  - component: {fileID: 7022147118683797721}
+  - component: {fileID: 5586569171854973485}
   m_Layer: 0
   m_Name: purplefish
   m_TagString: Untagged
@@ -213,6 +215,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7022147118683797721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854716437451678607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0278997, y: 3.3021326, z: 9.7983675}
+  m_Center: {x: 0.13945669, y: 0.41994905, z: -0.40560007}
+--- !u!114 &5586569171854973485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854716437451678607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b832f4fa8fd682d4b8b7f866ec40e532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    name: 
+    info: 
+    rarity: 0
+    depth: 0
+    moveRate: 0
+    shakeFrequency: 0
+    shakeAmplitude: 0
+    rotateRange: 45
+    rotateInterval: 2.5
+    minPopulation: 1
+    maxPopulation: 1
+    briefInfo: 
+    ID: 0
 --- !u!1 &8854716437451678689
 GameObject:
   m_ObjectHideFlags: 0
