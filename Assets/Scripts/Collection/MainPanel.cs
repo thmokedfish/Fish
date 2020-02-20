@@ -43,11 +43,13 @@ public class MainPanel : MonoBehaviour
     GameObject temp;
 
     DataList dl = new DataList();
+    public int[] fishNumber;
 
     void Start()
     {
         InitFish();
         LoadJson();
+        FishNumberInit();
         FishSet(0);
         InitButton();
     }
@@ -96,7 +98,7 @@ public class MainPanel : MonoBehaviour
         {
             Button go = GameObject.Instantiate(buttonPrefab);
             go.transform.SetParent(buttonParent.transform);
-            if (DataManager.Instance.fishNumber[i] == 1)
+            if (fishNumber[i] == 1)
             {
                 go.GetComponentInChildren<Text>().text = "    " + fishData[i].ID.ToString() + "  " + fishData[i].briefInfo;
             }
@@ -112,7 +114,7 @@ public class MainPanel : MonoBehaviour
     }
     public void FishSet(int i)
     {
-        if (DataManager.Instance.fishNumber[i] == 0) return;
+        if (fishNumber[i] == 0) return;
         temp = GameObject.Instantiate(fish[i], new Vector3(0, 2.5f, 0), Quaternion.identity);
         temp.GetComponent<DataNumber>().data = fishData[i];
         temp.transform.SetParent(exhibitionStand.transform);
@@ -151,5 +153,23 @@ public class MainPanel : MonoBehaviour
     public void SwitchScene(int index)
     {
         SceneManager.LoadScene(index);
+    }
+    public void FishNumberInit()
+    {
+        fishNumber = new int[28];
+        foreach (string name in DataManager.Instance.capturedNameSet)
+        {
+            for (int i = 0; i < 28; i++)
+            {
+                if (fishData[i].name == name)
+                {
+                    Debug.Log(name);
+                    if (fishNumber[i] == 0)
+                    {
+                        fishNumber[i] = 1;
+                    }
+                }
+            }
+        }
     }
 }

@@ -13,7 +13,6 @@ public class DataManager : MonoBehaviour
     [SerializeField]private int LatestCount = 3;
     public Queue<FishData> LatestCaptured;
 
-    public int[] fishNumber;
     private void Awake()
     {
         if (Instance == null)
@@ -28,23 +27,16 @@ public class DataManager : MonoBehaviour
         LoadJson();
         InitDataDic();
         LatestCaptured = new Queue<FishData>(LatestCount);
-        fishNumber = new int[28];
     }
 
     private void Start()
     {
-        // EventManager.Instance.SetStringEvents.Add("name",)
-        //DontDestroyOnLoad(this.gameObject);
         EventManager.Instance.AddReferenceEvents("OnScanFinish", AddCapturedFish);
     }
 
     private void AddCapturedFish(object fishData)
     {
         FishData data = fishData as FishData;
-        if (fishNumber[data.ID - 1] == 0)
-        {
-            fishNumber[data.ID - 1] = 1;
-        }
         capturedNameSet.Add(data.name);
         LatestCaptured.Enqueue(data);
         if(LatestCaptured.Count>LatestCount)
