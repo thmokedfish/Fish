@@ -23,6 +23,12 @@ public class Scanning : MonoBehaviour
     private Transform fish;
     public OnValueChange OnScanValueChange;
 
+    
+    public Material[] tempMaterial=new Material[1];
+    public Material[] scanMaterial=new Material[1];
+    int isDoing = 0;
+    int over = 1;
+
     private void Start()
     {
     }
@@ -49,10 +55,17 @@ public class Scanning : MonoBehaviour
     }
     private void ScanFish(RaycastHit hit)
     {
-        if(hit.transform != fish)
+        if (hit.transform != fish)
         {
             fish = hit.transform;
             CurValue = 0;
+            tempMaterial = fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials;
+            isDoing = 1;
+        }
+        if (hit.transform==fish&&isDoing==1)
+        {
+            fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = scanMaterial;
+            over =0;
         }
         CurValue += Time.deltaTime;
         if (CurValue > ScanTime)
@@ -70,6 +83,10 @@ public class Scanning : MonoBehaviour
         }
         else
             CurValue = 0;
+        if (over ==0)
+        {
+            fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = tempMaterial;
+        }
     }
 
     private void FinishScan(RaycastHit hit)
@@ -80,8 +97,12 @@ public class Scanning : MonoBehaviour
             Debug.LogError("no fishmove!");
             return;
         }
-        FishData fish = follow.target.data;
-        Debug.Log(fish.info);
-        EventManager.Instance.InvokeReferenceEvents("OnScanFinish", fish);
+        fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = tempMaterial;
+        isDoing = 0;
+        over = 1;
+        FishData fishData = follow.target.data;
+        Debug.Log(fishData.info);
+        EventManager.Instance.InvokeReferenceEvents("OnScanFinish", fishData);
+        fish = null;
     }
 }

@@ -1114,7 +1114,6 @@ MonoBehaviour:
     jellyDatas: []
   LocalPath: FishData/FishData.json
   LatestCount: 3
-  fishNumber: 
 --- !u!1 &475211707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,6 +2153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScanTime: 0.6
   maxDistance: 30
+  tempMaterial:
+  - {fileID: 2100000, guid: fca3490f79004b94ebafe43498ba7402, type: 2}
+  scanMaterial:
+  - {fileID: 2100000, guid: 5a1df83015751cb4ea44f53016831fb9, type: 2}
 --- !u!114 &992567514
 MonoBehaviour:
   m_ObjectHideFlags: 0
