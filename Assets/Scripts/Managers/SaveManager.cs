@@ -35,7 +35,12 @@ public class SaveManager:MonoBehaviour
     public void BinaryLoad()
     {
         BinaryFormatter bf = new BinaryFormatter();
+        if(!File.Exists(savePath))
+        {
+            BinarySave();
+        }
         FileStream fileStream = File.Open(savePath, FileMode.Open);
+        
         string[] loadedNames = bf.Deserialize(fileStream) as string[];
         HashSet<string> nameHashSet = new HashSet<string>();
         for (int i = 0; i < loadedNames.Length; i++)
@@ -57,6 +62,10 @@ public class SaveManager:MonoBehaviour
     public void BinarySave()
     {
         HashSet<string> set = DataManager.Instance.capturedNameSet;
+        if(set==null)
+        {
+            set = new HashSet<string>();
+        }
         string[] save = new string[set.Count];
         int i = 0;
         foreach(string name in set)

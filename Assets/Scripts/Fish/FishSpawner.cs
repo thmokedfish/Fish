@@ -252,12 +252,11 @@ public class FishSpawner : MonoBehaviour
     }
     public void ShowLoadedData()
     {
-        if (LoadedData == null) { return; }
         Debug.Log("loaded data length:" + LoadedData.datalist.Length);
         Debug.Log("jelly num:" + LoadedData.jellyDatas.Length);
         foreach (FishData data in LoadedData.datalist)
         {
-            Debug.Log(data.name);
+            // Debug.Log(data.name);
         }
     }
 }

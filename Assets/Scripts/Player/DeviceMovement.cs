@@ -81,11 +81,12 @@ public class DeviceMovement : MonoBehaviour
 
     private void HideCursor(float val)
     {
+        Debug.Log("hidecursor " + val);
         if(val>0)
         {
             OnUI = false;
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
         else
         {
