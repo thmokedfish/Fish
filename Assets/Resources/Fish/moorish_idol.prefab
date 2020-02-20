@@ -574,7 +574,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.27, y: 5.89, z: 6.49}
+  m_Size: {x: 2.5, y: 6, z: 8}
   m_Center: {x: 0, y: 0.62, z: 0.93}
 --- !u!1 &6065741681177628150
 GameObject:
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 6065741681177137558}
   - component: {fileID: 6065741681163960470}
   m_Layer: 0
-  m_Name: Cylinder01
+  m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

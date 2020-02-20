@@ -19,8 +19,12 @@ public class Scanning : MonoBehaviour
         } 
     }
     public float maxDistance;
+
+    public Material ScanningMaterial;
     private RaycastHit hit;
-    private Transform fish;
+    private Transform currentFish;//正在扫描的鱼
+    public SkinnedMeshRenderer currentRenderer;
+    public Material currentMat;
     public OnValueChange OnScanValueChange;
 
     private void Start()
@@ -49,21 +53,38 @@ public class Scanning : MonoBehaviour
     }
     private void ScanFish(RaycastHit hit)
     {
-        if(hit.transform != fish)
+        if(hit.transform != currentFish)
         {
-            fish = hit.transform;
+            currentFish = hit.transform;
             CurValue = 0;
+            Transform child = hit.transform.Find("default");
+            if (!child)
+            {
+                child = hit.transform.GetChild(0).Find("default");
+            }
+            if (currentRenderer)
+            {
+                currentRenderer.material = currentMat;
+            }
+            currentRenderer = child.GetComponent<SkinnedMeshRenderer>();
+            currentMat = currentRenderer.material;
         }
+        currentRenderer.material = ScanningMaterial;
         CurValue += Time.deltaTime;
         if (CurValue > ScanTime)
         {
             CurValue = 0;
             FinishScan(hit);
         }
+        
     }
 
     private void OutOfScan()
     {
+        if (currentRenderer)
+        {
+            currentRenderer.material = currentMat;
+        }
         if (CurValue > 0)
         {
             CurValue -= Time.deltaTime/2;
