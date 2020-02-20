@@ -163,9 +163,10 @@ public class MainPanel : MonoBehaviour
             {
                 if (fishData[i].name == name)
                 {
-                    if (fishNumber[fishData[i].ID-1] == 0)
+                    Debug.Log(name);
+                    if (fishNumber[i] == 0)
                     {
-                        fishNumber[fishData[i].ID - 1] = 1;
+                        fishNumber[i] = 1;
                     }
                 }
             }

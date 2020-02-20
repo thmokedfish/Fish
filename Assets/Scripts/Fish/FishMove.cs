@@ -55,7 +55,7 @@ public class FishMove : MonoBehaviour
             // transform.DORotateQuaternion(result, 1f);
             Vector3 randomDir = Quaternion.AngleAxis(Random.Range(0, maxAngle), transform.up) * transform.forward;
             Vector3 result = Quaternion.AngleAxis(Random.Range(0, 360), transform.forward) * randomDir;
-            result.y = result.y / 2;
+            result.y = result.y / 3;
             transform.DORotateQuaternion(Quaternion.LookRotation(result, Vector3.up), interval);
             yield return new WaitForSeconds(interval);
         }

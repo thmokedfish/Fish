@@ -31,7 +31,6 @@ public class DataManager : MonoBehaviour
 
     private void Start()
     {
-        // EventManager.Instance.SetStringEvents.Add("name",)
         EventManager.Instance.AddReferenceEvents("OnScanFinish", AddCapturedFish);
     }
 

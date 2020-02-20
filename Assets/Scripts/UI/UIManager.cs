@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     private Stack<GameObject> UIPanels = new Stack<GameObject>();
     public static UIManager Instance;
 
-
     private void Awake()
     {
         if(Instance==null)
