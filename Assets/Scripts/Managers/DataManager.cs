@@ -11,7 +11,7 @@ public class DataManager : MonoBehaviour
     public FishDataList LoadedData;
     public string LocalPath = "FishData/FishData.json";
     [SerializeField]private int LatestCount = 3;
-    public Queue<FishData> LatestCaptured;
+    public Queue<FishData> LatestCaptured= new Queue<FishData>(3);
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class DataManager : MonoBehaviour
         }
         LoadJson();
         InitDataDic();
-        LatestCaptured = new Queue<FishData>(LatestCount);
+       // LatestCaptured = new Queue<FishData>(LatestCount);
     }
 
     private void Start()

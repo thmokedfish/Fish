@@ -23,6 +23,8 @@ public class Scanning : MonoBehaviour
     private Transform fish;
     public OnValueChange OnScanValueChange;
 
+    private bool isScanning = false;
+
     
     public Material[] tempMaterial=new Material[1];
     public Material[] scanMaterial=new Material[1];
@@ -40,8 +42,17 @@ public class Scanning : MonoBehaviour
     private void Scan()
     {
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            isScanning = true;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            isScanning = false;
+        }
+
+        if(isScanning)
+        { 
             if (Physics.Raycast(this.transform.position, transform.forward, out hit, maxDistance))
             {
                 if (hit.transform.tag == "Fish")
@@ -57,6 +68,10 @@ public class Scanning : MonoBehaviour
     {
         if (hit.transform != fish)
         {
+            if (fish)
+            {
+                fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = tempMaterial;
+            }
             fish = hit.transform;
             CurValue = 0;
             tempMaterial = fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials;
@@ -71,6 +86,7 @@ public class Scanning : MonoBehaviour
         if (CurValue > ScanTime)
         {
             CurValue = 0;
+            isScanning = false;
             FinishScan(hit);
         }
     }
