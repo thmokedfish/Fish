@@ -19,13 +19,15 @@ public class Scanning : MonoBehaviour
         } 
     }
     public float maxDistance;
-
-    public Material ScanningMaterial;
     private RaycastHit hit;
-    private Transform currentFish;//正在扫描的鱼
-    public SkinnedMeshRenderer currentRenderer;
-    public Material currentMat;
+    private Transform fish;
     public OnValueChange OnScanValueChange;
+
+    
+    public Material[] tempMaterial=new Material[1];
+    public Material[] scanMaterial=new Material[1];
+    int isDoing = 0;
+    int over = 1;
 
     private void Start()
     {
@@ -53,44 +55,38 @@ public class Scanning : MonoBehaviour
     }
     private void ScanFish(RaycastHit hit)
     {
-        if(hit.transform != currentFish)
+        if (hit.transform != fish)
         {
-            currentFish = hit.transform;
+            fish = hit.transform;
             CurValue = 0;
-            Transform child = hit.transform.Find("default");
-            if (!child)
-            {
-                child = hit.transform.GetChild(0).Find("default");
-            }
-            if (currentRenderer)
-            {
-                currentRenderer.material = currentMat;
-            }
-            currentRenderer = child.GetComponent<SkinnedMeshRenderer>();
-            currentMat = currentRenderer.material;
+            tempMaterial = fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials;
+            isDoing = 1;
         }
-        currentRenderer.material = ScanningMaterial;
+        if (hit.transform==fish&&isDoing==1)
+        {
+            fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = scanMaterial;
+            over =0;
+        }
         CurValue += Time.deltaTime;
         if (CurValue > ScanTime)
         {
             CurValue = 0;
             FinishScan(hit);
         }
-        
     }
 
     private void OutOfScan()
     {
-        if (currentRenderer)
-        {
-            currentRenderer.material = currentMat;
-        }
         if (CurValue > 0)
         {
             CurValue -= Time.deltaTime/2;
         }
         else
             CurValue = 0;
+        if (over ==0)
+        {
+            fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = tempMaterial;
+        }
     }
 
     private void FinishScan(RaycastHit hit)
@@ -101,8 +97,12 @@ public class Scanning : MonoBehaviour
             Debug.LogError("no fishmove!");
             return;
         }
-        FishData fish = follow.target.data;
-        Debug.Log(fish.info);
-        EventManager.Instance.InvokeReferenceEvents("OnScanFinish", fish);
+        fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = tempMaterial;
+        isDoing = 0;
+        over = 1;
+        FishData fishData = follow.target.data;
+        Debug.Log(fishData.info);
+        EventManager.Instance.InvokeReferenceEvents("OnScanFinish", fishData);
+        fish = null;
     }
 }

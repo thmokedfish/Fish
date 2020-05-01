@@ -176,7 +176,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2153,9 +2153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScanTime: 0.6
   maxDistance: 30
-  ScanningMaterial: {fileID: 2100000, guid: 5a1df83015751cb4ea44f53016831fb9, type: 2}
-  currentRenderer: {fileID: 0}
-  currentMat: {fileID: 0}
+  tempMaterial:
+  - {fileID: 2100000, guid: fca3490f79004b94ebafe43498ba7402, type: 2}
+  scanMaterial:
+  - {fileID: 2100000, guid: 5a1df83015751cb4ea44f53016831fb9, type: 2}
 --- !u!114 &992567514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2786,11 +2787,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishInfoButton (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4767560789226816015, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4767560789226816009, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2869,7 +2865,7 @@ PrefabInstance:
     - target: {fileID: 4767560789226816014, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107
+      value: -0.012506008
       objectReference: {fileID: 0}
     - target: {fileID: 4767560789226816014, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
         type: 3}
@@ -3410,11 +3406,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishInfoButton (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4767560789226816015, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4767560789226816009, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3493,7 +3484,7 @@ PrefabInstance:
     - target: {fileID: 4767560789226816014, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -213
+      value: -0.012512207
       objectReference: {fileID: 0}
     - target: {fileID: 4767560789226816014, guid: f3ac2d902a9c2e149b6f67c3dab150bd,
         type: 3}
