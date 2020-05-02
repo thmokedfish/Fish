@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1510945473334477262}
   - component: {fileID: 1510945473334477261}
-  - component: {fileID: 7846124220943352833}
+  - component: {fileID: 2128688058281365754}
   m_Layer: 0
   m_Name: dumbo_octopus
   m_TagString: Fish
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510945473334477260}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 33.59, y: -3, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
@@ -46,7 +46,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 5, z: 8}
   m_Center: {x: 0, y: 0.43, z: -0.73}
---- !u!114 &7846124220943352833
+--- !u!114 &2128688058281365754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,10 +55,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1510945473334477260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10da8787ebbc35e4eacef35b0655443a, type: 3}
+  m_Script: {fileID: 11500000, guid: b731459485b1eb74e9fc7b1aca25880f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  data:
+    name: 
+    info: 
+    briefInfo: 
+    rarity: 0
+    depth: 0
+    minPopulation: 1
+    maxPopulation: 1
+    ID: 0
+    moveRate: 0
+    shakeFrequency: 0
+    shakeAmplitude: 0
+    rotateRange: 45
+    rotateInterval: 2.5
+  position: {x: 0, y: 0, z: 0}
+  forward: {x: 0, y: 0, z: 0}
+  avgFlockHeading: {x: 0, y: 0, z: 0}
+  avgAvoidanceHeading: {x: 0, y: 0, z: 0}
+  centreOfFlockmates: {x: 0, y: 0, z: 0}
 --- !u!1 &3618903683262747648
 GameObject:
   m_ObjectHideFlags: 0

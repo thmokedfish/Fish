@@ -6,7 +6,14 @@ using UnityEngine.UI;
 
 public class FishSpawner : MonoBehaviour
 {
-    public static FishSpawner Instance;
+    private static FishSpawner instance;
+    public static FishSpawner Instance 
+    {
+        get { return instance; }
+        private set { instance = value; }
+    }
+
+    public List<FishMove> spawnedFishes=new List<FishMove>(32);
 
     public string LocalPath = "FishData/FishData.json";
     public float[] yDivide;  //每个深度的y深度区间，Length-1等于深度总数(至少为1)
@@ -16,14 +23,11 @@ public class FishSpawner : MonoBehaviour
 
     public float range;//矩形内随机，range为矩形边长的一半
     public float fishInterval;
-    //private Pool<FishMove> pool;
     private FishDataList LoadedData;
     private Transform player;
-   // private GameObject[] FishPrefabs;
     private List<List<FishData>> depthList = new List<List<FishData>>();
 
     private List<Transform> parents = new List<Transform>();
-   // private List<List<JellyData>> jellyDepthList = new List<List<JellyData>>();
     public FishMove targetPrefab; //用于传递给pool
 
     private void Awake()
@@ -45,7 +49,7 @@ public class FishSpawner : MonoBehaviour
     }
     private void Update()
     {
-        DetectingPlayerDepth();
+       // DetectingPlayerDepth();
     }
 
     private IEnumerator DetectingPlayerDepth()
@@ -190,7 +194,34 @@ public class FishSpawner : MonoBehaviour
         SpawnFish(data,center);
     }
 
-    public void SpawnFish(FishData data,Vector3 center)
+
+    public void SpawnFish(FishData data, Vector3 center)
+    {
+        string fishname = data.name;
+        FishMove fishPrefab = Resources.Load<FishMove>("Fish/" + fishname);
+        if (fishPrefab == null)
+        {
+            Debug.Log(fishname + " prefab not exist!");
+            return;
+        }
+        Vector3 pos;
+        Quaternion rot;
+        //RandomXZ(out pos, out rot, range, center);
+        RandomAreaXZ(out pos, out rot, range, center);
+        pos += new Vector3(0, center.y + Random.Range(yDivide[data.depth], yDivide[data.depth + 1]), 0);
+
+
+        int fishNum = Random.Range(data.minPopulation, data.maxPopulation + 1);
+        for (int i = 0; i < fishNum; i++)
+        {
+            FishMove fish = GameObject.Instantiate(fishPrefab, pos, rot);
+            //不加入深度，若加入则去掉注释
+            //fish.transform.parent = parents[data.depth];
+            fish.data = data;
+            pos += new Vector3(Random.value, Random.Range(-1, 1), Random.Range(-1, 1)) * fishInterval;
+        }
+    }
+    public void SpawnFishWithTarget(FishData data,Vector3 center)
     {
         string fishname = data.name;
         GameObject fishPrefab = Resources.Load<GameObject>("Fish/" + fishname);

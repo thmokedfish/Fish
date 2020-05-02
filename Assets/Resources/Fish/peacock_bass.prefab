@@ -259,8 +259,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1905420427717417937}
   - component: {fileID: 1905420427707577385}
-  - component: {fileID: 8372850839655924788}
   - component: {fileID: 962161413}
+  - component: {fileID: 3454501885843554692}
   m_Layer: 0
   m_Name: peacock_bass
   m_TagString: Fish
@@ -303,19 +303,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8372850839655924788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905420427717052401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10da8787ebbc35e4eacef35b0655443a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!65 &962161413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -329,6 +316,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 4, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3454501885843554692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905420427717052401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b731459485b1eb74e9fc7b1aca25880f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    name: 
+    info: 
+    briefInfo: 
+    rarity: 0
+    depth: 0
+    minPopulation: 1
+    maxPopulation: 1
+    ID: 0
+    moveRate: 0
+    shakeFrequency: 0
+    shakeAmplitude: 0
+    rotateRange: 45
+    rotateInterval: 2.5
+  position: {x: 0, y: 0, z: 0}
+  forward: {x: 0, y: 0, z: 0}
+  avgFlockHeading: {x: 0, y: 0, z: 0}
+  avgAvoidanceHeading: {x: 0, y: 0, z: 0}
+  centreOfFlockmates: {x: 0, y: 0, z: 0}
 --- !u!1 &1905420427717052409
 GameObject:
   m_ObjectHideFlags: 0

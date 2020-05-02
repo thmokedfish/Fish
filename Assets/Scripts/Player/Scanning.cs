@@ -107,7 +107,7 @@ public class Scanning : MonoBehaviour
 
     private void FinishScan(RaycastHit hit)
     {
-        FollowFishMove follow=hit.transform.GetComponent<FollowFishMove>();
+        FishMove follow=hit.transform.GetComponent<FishMove>();
         if(!follow)
         {
             Debug.LogError("no fishmove!");
@@ -116,7 +116,7 @@ public class Scanning : MonoBehaviour
         fish.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().materials = tempMaterial;
         isDoing = 0;
         over = 1;
-        FishData fishData = follow.target.data;
+        FishData fishData = follow.data;
         Debug.Log(fishData.info);
         EventManager.Instance.InvokeReferenceEvents("OnScanFinish", fishData);
         fish = null;

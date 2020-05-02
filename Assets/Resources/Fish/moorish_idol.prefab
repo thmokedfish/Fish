@@ -504,8 +504,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6065741681177137556}
   - component: {fileID: 6065741681168154198}
-  - component: {fileID: 3807470433028037364}
   - component: {fileID: 1383728550}
+  - component: {fileID: 4206329489148059460}
   m_Layer: 0
   m_Name: moorish_idol
   m_TagString: Fish
@@ -550,19 +550,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3807470433028037364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6065741681177628148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10da8787ebbc35e4eacef35b0655443a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!65 &1383728550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -576,6 +563,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 6, z: 8}
   m_Center: {x: 0, y: 0.62, z: 0.93}
+--- !u!114 &4206329489148059460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065741681177628148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b731459485b1eb74e9fc7b1aca25880f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    name: 
+    info: 
+    briefInfo: 
+    rarity: 0
+    depth: 0
+    minPopulation: 1
+    maxPopulation: 1
+    ID: 0
+    moveRate: 0
+    shakeFrequency: 0
+    shakeAmplitude: 0
+    rotateRange: 45
+    rotateInterval: 2.5
+  position: {x: 0, y: 0, z: 0}
+  forward: {x: 0, y: 0, z: 0}
+  avgFlockHeading: {x: 0, y: 0, z: 0}
+  avgAvoidanceHeading: {x: 0, y: 0, z: 0}
+  centreOfFlockmates: {x: 0, y: 0, z: 0}
 --- !u!1 &6065741681177628150
 GameObject:
   m_ObjectHideFlags: 0

@@ -782,8 +782,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3230005223681611809}
-  - component: {fileID: 2726580520602720397}
   - component: {fileID: 1698047367}
+  - component: {fileID: 5250491715022029137}
   m_Layer: 0
   m_Name: rainbow_cichild
   m_TagString: Fish
@@ -806,19 +806,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2726580520602720397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5551982445181643444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10da8787ebbc35e4eacef35b0655443a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!65 &1698047367
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -832,3 +819,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 8, z: 12}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5250491715022029137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551982445181643444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b731459485b1eb74e9fc7b1aca25880f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    name: 
+    info: 
+    briefInfo: 
+    rarity: 0
+    depth: 0
+    minPopulation: 1
+    maxPopulation: 1
+    ID: 0
+    moveRate: 0
+    shakeFrequency: 0
+    shakeAmplitude: 0
+    rotateRange: 45
+    rotateInterval: 2.5
+  position: {x: 0, y: 0, z: 0}
+  forward: {x: 0, y: 0, z: 0}
+  avgFlockHeading: {x: 0, y: 0, z: 0}
+  avgAvoidanceHeading: {x: 0, y: 0, z: 0}
+  centreOfFlockmates: {x: 0, y: 0, z: 0}

@@ -13,6 +13,15 @@ public class FishMove : MonoBehaviour
     private float lastX = 0;
     private float shakeAngle = 0;
 
+    [HideInInspector]public Vector3 position;
+    [HideInInspector]public Vector3 forward;
+
+    private Vector3 velocity;
+    private Vector3 acceleration;
+
+    [HideInInspector] public Vector3 avgFlockHeading;
+    [HideInInspector] public Vector3 avgAvoidanceHeading;
+    [HideInInspector] public Vector3 centreOfFlockmates;
     private void Start()
     {
         lastpos = transform.position;
@@ -20,14 +29,27 @@ public class FishMove : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(Rotate(data.rotateRange, data.rotateInterval));
+        //StartCoroutine(Rotate(data.rotateRange, data.rotateInterval));
     }
+
+    public void OnUpdate()
+    {
+
+    }
+    private void LateUpdate()
+    {
+       // this.transform.position = position;
+       // transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
+    }
+
+    
     private void Update()
     {
-        Move();
-        CalculatePositionDiff();
+      //  Move();
+     //   CalculatePositionDiff();
     }
-    //到达边界despawn
+    
+
 
     private void CalculatePositionDiff()
     {

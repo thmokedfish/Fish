@@ -492,8 +492,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6034126829576263854}
-  - component: {fileID: 4487655021788152375}
   - component: {fileID: 1059949348}
+  - component: {fileID: 2222238653717024619}
   m_Layer: 0
   m_Name: stingray 1
   m_TagString: Fish
@@ -516,19 +516,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &4487655021788152375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6573649496751764608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10da8787ebbc35e4eacef35b0655443a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!65 &1059949348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -542,3 +529,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 3, z: 6}
   m_Center: {x: 0, y: 0.19, z: 3.17}
+--- !u!114 &2222238653717024619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573649496751764608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b731459485b1eb74e9fc7b1aca25880f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    name: 
+    info: 
+    briefInfo: 
+    rarity: 0
+    depth: 0
+    minPopulation: 1
+    maxPopulation: 1
+    ID: 0
+    moveRate: 0
+    shakeFrequency: 0
+    shakeAmplitude: 0
+    rotateRange: 45
+    rotateInterval: 2.5
+  position: {x: 0, y: 0, z: 0}
+  forward: {x: 0, y: 0, z: 0}
+  avgFlockHeading: {x: 0, y: 0, z: 0}
+  avgAvoidanceHeading: {x: 0, y: 0, z: 0}
+  centreOfFlockmates: {x: 0, y: 0, z: 0}

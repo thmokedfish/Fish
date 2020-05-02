@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762554560531561826}
   - component: {fileID: 1762554560531561825}
-  - component: {fileID: 1443941022629937300}
+  - component: {fileID: 2167467193422798942}
   m_Layer: 0
   m_Name: cuttlefish
   m_TagString: Fish
@@ -46,7 +46,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 9}
   m_Center: {x: 0, y: 0, z: 0.3}
---- !u!114 &1443941022629937300
+--- !u!114 &2167467193422798942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,10 +55,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1762554560531561824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10da8787ebbc35e4eacef35b0655443a, type: 3}
+  m_Script: {fileID: 11500000, guid: b731459485b1eb74e9fc7b1aca25880f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  data:
+    name: 
+    info: 
+    briefInfo: 
+    rarity: 0
+    depth: 0
+    minPopulation: 1
+    maxPopulation: 1
+    ID: 0
+    moveRate: 0
+    shakeFrequency: 0
+    shakeAmplitude: 0
+    rotateRange: 45
+    rotateInterval: 2.5
+  position: {x: 0, y: 0, z: 0}
+  forward: {x: 0, y: 0, z: 0}
+  avgFlockHeading: {x: 0, y: 0, z: 0}
+  avgAvoidanceHeading: {x: 0, y: 0, z: 0}
+  centreOfFlockmates: {x: 0, y: 0, z: 0}
 --- !u!1 &5748257761434657959
 GameObject:
   m_ObjectHideFlags: 0

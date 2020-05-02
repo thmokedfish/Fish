@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Collection\RayCast.cs" />
     <Compile Include="Assets\Scripts\Collection\Rotation.cs" />
     <Compile Include="Assets\Scripts\Collection\Watch.cs" />
+    <Compile Include="Assets\Scripts\Fish\BoidsManager.cs" />
     <Compile Include="Assets\Scripts\Fish\FishData\FishData.cs" />
     <Compile Include="Assets\Scripts\Fish\FishData\FishDataList.cs" />
     <Compile Include="Assets\Scripts\Fish\FishMove.cs" />
