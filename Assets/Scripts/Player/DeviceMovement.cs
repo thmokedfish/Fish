@@ -41,10 +41,12 @@ public class DeviceMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector3 v= transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical") ;
-        v = v.normalized * speed;
-        v += Vector3.up * Input.GetAxis("Jump") * speed;
-        rb.velocity = v;
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        Vector3 velocity= transform.right * h + transform.forward * v ;
+        velocity = velocity.normalized * Mathf.Max(Mathf.Abs(h), Mathf.Abs(v)) * speed;
+        velocity += Vector3.up * Input.GetAxis("Jump") * speed;
+        rb.velocity = velocity;
             //new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
     }
 
