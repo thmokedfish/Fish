@@ -20,7 +20,6 @@ public class BoidsManager : MonoBehaviour
     {
         startFishes = FishSpawner.Instance.AllFishes;
         fishes = startFishes.ToArray();
-        Debug.Log(fishes.Length);
     }
 
     void Update()

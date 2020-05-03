@@ -43,10 +43,14 @@ public class DeviceMovement : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
+        float j = Input.GetAxis("Jump");
+        float maxXZ = Mathf.Max(Mathf.Abs(h), Mathf.Abs(v));
+        float maxY = Mathf.Max(maxXZ, Mathf.Abs(j));
         Vector3 velocity= transform.right * h + transform.forward * v ;
-        velocity = velocity.normalized * Mathf.Max(Mathf.Abs(h), Mathf.Abs(v)) * speed;
-        velocity += Vector3.up * Input.GetAxis("Jump") * speed;
-        rb.velocity = velocity;
+        velocity = velocity.normalized * maxXZ ;
+        velocity += Vector3.up * j;
+        velocity = velocity.normalized * maxY;
+        rb.velocity = velocity * speed;
             //new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
     }
 
