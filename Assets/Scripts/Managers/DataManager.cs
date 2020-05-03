@@ -24,13 +24,13 @@ public class DataManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        LoadJson();
-        InitDataDic();
-       // LatestCaptured = new Queue<FishData>(LatestCount);
     }
 
-    private void Start()
+   public void Init()
     {
+        LoadJson();
+        InitDataDic();
+        // LatestCaptured = new Queue<FishData>(LatestCount);
         EventManager.Instance.AddReferenceEvents("OnScanFinish", AddCapturedFish);
     }
 

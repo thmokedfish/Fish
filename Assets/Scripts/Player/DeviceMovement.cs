@@ -86,7 +86,6 @@ public class DeviceMovement : MonoBehaviour
 
     private void HideCursor(float val)
     {
-        Debug.Log("hidecursor " + val);
         if(val>0)
         {
             OnUI = false;

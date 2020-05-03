@@ -6,6 +6,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveManager:MonoBehaviour
 {
+    private static SaveManager instance;
+    public static SaveManager Instance
+    {
+        get { return instance; }
+        set { instance = value; }
+    }
     [SerializeField] private string savePath = "save1";
     /*
     public static SaveManager Instance 
@@ -19,13 +25,18 @@ public class SaveManager:MonoBehaviour
         private set { Instance = value; }
     }
     */
-    private void Start()
+    public void Init()
     {
         // Load(savePath);
         // Save();
 
         BinaryLoad();
         //BinarySave();
+    }
+
+    private void Awake()
+    {
+        Instance = this;
     }
     private void OnDestroy()
     {

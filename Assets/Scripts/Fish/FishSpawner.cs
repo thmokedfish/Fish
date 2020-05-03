@@ -13,7 +13,7 @@ public class FishSpawner : MonoBehaviour
         private set { instance = value; }
     }
 
-    public List<FishMove> spawnedFishes=new List<FishMove>(32);
+    public List<FishMove> AllFishes=new List<FishMove>(32);
 
     public string LocalPath = "FishData/FishData.json";
     public float[] yDivide;  //每个深度的y深度区间，Length-1等于深度总数(至少为1)
@@ -34,18 +34,16 @@ public class FishSpawner : MonoBehaviour
     {
         Instance = this;
     }
-    private void Start()
+
+
+    public void Init()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-       // pool = new Pool<FishMove>(targetPrefab);
         LoadedData = DataManager.Instance.LoadedData;
         InitDepthLists();
         //ShowLoadedData();
         SpawningAll();
-        //  RandomSpawnFish(2, Vector3.zero);
-        // RandomSpawnFish(1, Vector3.zero);
-        //StartCoroutine(MainSpawning());
-         StartCoroutine(DetectingPlayerDepth());
+        //StartCoroutine(DetectingPlayerDepth());
     }
     private void Update()
     {
@@ -215,6 +213,7 @@ public class FishSpawner : MonoBehaviour
         for (int i = 0; i < fishNum; i++)
         {
             FishMove fish = GameObject.Instantiate(fishPrefab, pos, rot);
+            AllFishes.Add(fish);
             //不加入深度，若加入则去掉注释
             //fish.transform.parent = parents[data.depth];
             fish.data = data;

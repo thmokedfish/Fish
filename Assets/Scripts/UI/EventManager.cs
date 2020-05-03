@@ -9,7 +9,12 @@ public delegate void ReferenceEvent(object obj);
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager Instance;
+    private static EventManager instance;
+    public static EventManager Instance
+    {
+        get { return instance; }
+        private set { instance = value; }
+    }
 
     private Dictionary<string, OnValueChange> ValueChangeEvents;
 
@@ -17,9 +22,13 @@ public class EventManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+    }
+
+    public void Init()
+    {
         ValueChangeEvents = new Dictionary<string, OnValueChange>();
         ReferenceEvents = new Dictionary<string, ReferenceEvent>();
-
     }
     //约定:传入的参数在0-1之间
     public void AddValueChangeEvent(string key,OnValueChange val)
