@@ -11,9 +11,9 @@ public class BoidSettings:MonoBehaviour
     public float avoidanceRadius = 20;
     public float maxSteerForce = 3;
 
-    public float alignWeight = 10;
-    public float cohesionWeight = 10;
-    public float seperateWeight = 10;
+   //public float alignWeight = 10;
+   // public float cohesionWeight = 10;
+   // public float seperateWeight = 10;
 
     public float targetWeight = 1;
 

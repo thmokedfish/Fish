@@ -5,8 +5,9 @@ using DG.Tweening;
 
 public class FishMove : MonoBehaviour
 {
-    public BoidSettings settings;
     public FishData data;
+    public BoidSettings settings;
+    private float maxSpeed, minSpeed;
 
     public Vector3 PositionDiffPerFrame { get; private set; }
 
@@ -37,8 +38,9 @@ public class FishMove : MonoBehaviour
         target = position;
         forward = myTransform.forward;
 
-        float startSpeed = (settings.minSpeed + settings.maxSpeed) / 2;
-        velocity = transform.forward * startSpeed;
+        velocity = transform.forward * data.avgSpeed;
+        maxSpeed = data.avgSpeed + data.speedDiff;
+        minSpeed = data.avgSpeed - data.speedDiff;
     }
     public void OnUpdate()
     {
@@ -46,7 +48,7 @@ public class FishMove : MonoBehaviour
 
       // target = new Vector3(position.x, startY, position.z);
       //  Vector3 offsetToTarget = target - position;
-      //  acceleration = SteerTowards(offsetToTarget) * settings.targetWeight;
+      //  acceleration = SteerTowards(offsetToTarget) * data.targetWeight;
         
 
         if (numPerceivedFlockmates != 0)
@@ -55,9 +57,9 @@ public class FishMove : MonoBehaviour
 
             Vector3 offsetToFlockmatesCentre = (centreOfFlockmates - position);
 
-            var alignmentForce = SteerTowards(avgFlockHeading) * settings.alignWeight;
-            var cohesionForce = SteerTowards(offsetToFlockmatesCentre) * settings.cohesionWeight;
-            var seperationForce = SteerTowards(avgAvoidanceHeading) * settings.seperateWeight;
+            var alignmentForce = SteerTowards(avgFlockHeading) * data.alignWeight;
+            var cohesionForce = SteerTowards(offsetToFlockmatesCentre) * data.cohesionWeight;
+            var seperationForce = SteerTowards(avgAvoidanceHeading) * data.seperateWeight;
 
             acceleration += alignmentForce;
             acceleration += cohesionForce;
@@ -67,14 +69,14 @@ public class FishMove : MonoBehaviour
         if (IsHeadingForCollision())
         {
             Vector3 collisionAvoidDir = ObstacleRays();
-            Vector3 collisionAvoidForce = SteerTowards(collisionAvoidDir) * settings.avoidCollisionWeight;
+            Vector3 collisionAvoidForce = SteerTowards(collisionAvoidDir) *settings.avoidCollisionWeight;
             acceleration += collisionAvoidForce;
         }
         acceleration.y = 0;
         velocity += acceleration * Time.deltaTime;
         float speed = velocity.magnitude;
         Vector3 dir = velocity / speed;
-        speed = Mathf.Clamp(speed, settings.minSpeed, settings.maxSpeed);
+        speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
         velocity = dir * speed;
 
         myTransform.position += velocity * Time.deltaTime;
@@ -87,7 +89,7 @@ public class FishMove : MonoBehaviour
     bool IsHeadingForCollision()
     {
         RaycastHit hit;
-        if (Physics.SphereCast(position, settings.boundsRadius, forward, out hit, settings.collisionAvoidDst, settings.obstacleMask))
+        if (Physics.SphereCast(position, settings.boundsRadius, forward, out hit,settings.collisionAvoidDst, settings.obstacleMask))
         {
             return true;
         }
@@ -108,13 +110,13 @@ public class FishMove : MonoBehaviour
             }
         }
 
-        return -forward;
+        return Vector3.Cross(Vector3.up, forward);
     }
 
 
     Vector3 SteerTowards(Vector3 vector)
     {
-        Vector3 v = vector.normalized * settings.maxSpeed - velocity;
+        Vector3 v = vector.normalized * maxSpeed - velocity;
         return Vector3.ClampMagnitude(v, settings.maxSteerForce);
     }
     

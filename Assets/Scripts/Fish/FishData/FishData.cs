@@ -34,15 +34,15 @@ public class FishData:FishDataBase
 {
     //移动参数
     //游动方式
-    public float maxSpeed; 
-    public float minSpeed;
+    public float avgSpeed;
+    public float speedDiff;
 
-    public float alignWeight = 10;
-    public float cohesionWeight = 10;
-    public float seperateWeight = 10;
+    public float alignWeight;
+    public float cohesionWeight;
+    public float seperateWeight;
     //shake
-    public float shakeFrequency = 0;//shake频率
-    public float shakeAmplitude = 0;  //shake振幅
+    //public float shakeFrequency = 0;//shake频率
+   // public float shakeAmplitude = 0;  //shake振幅
 
     //rotate
     public float rotateRange=45;//旋转的最大角度。

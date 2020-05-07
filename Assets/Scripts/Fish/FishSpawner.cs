@@ -41,6 +41,7 @@ public class FishSpawner : MonoBehaviour
     public void Init()
     {
         settings = BoidsManager.Instance.settings;
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
         LoadedData = DataManager.Instance.LoadedData;
         InitDepthLists();
