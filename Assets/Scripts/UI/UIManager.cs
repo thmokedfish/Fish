@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject EscPanel;
+    public Slider slider;
 
     private Stack<GameObject> UIPanels = new Stack<GameObject>();
     public static UIManager Instance;

@@ -25,7 +25,6 @@ public class Scanning : MonoBehaviour
 
     private bool isScanning = false;
 
-    
     public Material[] tempMaterial=new Material[1];
     public Material[] scanMaterial=new Material[1];
     int isDoing = 0;
