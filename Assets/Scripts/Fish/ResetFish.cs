@@ -6,8 +6,9 @@ public class ResetFish : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="FishTarget")
+        if(other.tag=="Fish")
         {
+            Debug.Log("reset");
             FishSpawner.Instance.ReSetting(other.GetComponent<FishMove>());
         }
     }

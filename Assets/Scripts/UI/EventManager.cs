@@ -7,7 +7,7 @@ public delegate void OnValueChange(float value);
 
 public delegate void ReferenceEvent(object obj);
 
-public class EventManager : MonoBehaviour
+public class EventManager 
 {
     private static EventManager instance;
     public static EventManager Instance
@@ -15,20 +15,22 @@ public class EventManager : MonoBehaviour
         get { return instance; }
         private set { instance = value; }
     }
+    static EventManager()
+    {
+        instance = new EventManager();
+    }
+    private EventManager()
+    {
+        ValueChangeEvents = new Dictionary<string, OnValueChange>();
+        ReferenceEvents = new Dictionary<string, ReferenceEvent>();
+    }
 
     private Dictionary<string, OnValueChange> ValueChangeEvents;
 
     private Dictionary<string, ReferenceEvent> ReferenceEvents;
-    private void Awake()
-    {
-        Instance = this;
-
-    }
 
     public void Init()
     {
-        ValueChangeEvents = new Dictionary<string, OnValueChange>();
-        ReferenceEvents = new Dictionary<string, ReferenceEvent>();
     }
     //约定:传入的参数在0-1之间
     public void AddValueChangeEvent(string key,OnValueChange val)

@@ -12,6 +12,7 @@ public class FishDataBase
 {
     public string name;
     public string info;
+
     //其实是中文名
     public string briefInfo;
 
@@ -33,7 +34,12 @@ public class FishData:FishDataBase
 {
     //移动参数
     //游动方式
-    public float moveRate; //前进速度
+    public float maxSpeed; 
+    public float minSpeed;
+
+    public float alignWeight = 10;
+    public float cohesionWeight = 10;
+    public float seperateWeight = 10;
     //shake
     public float shakeFrequency = 0;//shake频率
     public float shakeAmplitude = 0;  //shake振幅

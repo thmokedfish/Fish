@@ -30,6 +30,8 @@ public class FishSpawner : MonoBehaviour
     private List<Transform> parents = new List<Transform>();
     public FishMove targetPrefab; //用于传递给pool
 
+    private BoidSettings settings;
+
     private void Awake()
     {
         Instance = this;
@@ -38,16 +40,13 @@ public class FishSpawner : MonoBehaviour
 
     public void Init()
     {
+        settings = BoidsManager.Instance.settings;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         LoadedData = DataManager.Instance.LoadedData;
         InitDepthLists();
         //ShowLoadedData();
         SpawningAll();
         //StartCoroutine(DetectingPlayerDepth());
-    }
-    private void Update()
-    {
-       // DetectingPlayerDepth();
     }
 
     private IEnumerator DetectingPlayerDepth()
@@ -206,7 +205,9 @@ public class FishSpawner : MonoBehaviour
         Quaternion rot;
         //RandomXZ(out pos, out rot, range, center);
         RandomAreaXZ(out pos, out rot, range, center);
-        pos += new Vector3(0, center.y + Random.Range(yDivide[data.depth], yDivide[data.depth + 1]), 0);
+        float downY = center.y + Random.Range(yDivide[data.depth], yDivide[data.depth + 1]);
+        rot = Quaternion.LookRotation(new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range)),Vector3.up);
+        pos.y += downY;
 
 
         int fishNum = Random.Range(data.minPopulation, data.maxPopulation + 1);
@@ -217,6 +218,7 @@ public class FishSpawner : MonoBehaviour
             //不加入深度，若加入则去掉注释
             //fish.transform.parent = parents[data.depth];
             fish.data = data;
+            fish.Init(settings);
             pos += new Vector3(Random.value, Random.Range(-1, 1), Random.Range(-1, 1)) * fishInterval;
         }
     }
@@ -275,7 +277,7 @@ public class FishSpawner : MonoBehaviour
 
     public void RandomAreaXZ(out Vector3 pos, out Quaternion rot, float range, Vector3 center)
     {
-        float x = Random.Range(0-range, range);
+        float x = Random.Range(-range, range);
         float z = Random.Range(-range, range);
         pos = new Vector3(center.x+x, 0, center.z+z);
         rot = Quaternion.LookRotation(new Vector3(-x, 0, -z), Vector3.up);

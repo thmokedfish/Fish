@@ -25,6 +25,7 @@ public class SaveManager:MonoBehaviour
         private set { Instance = value; }
     }
     */
+    
     public void Init()
     {
         // Load(savePath);

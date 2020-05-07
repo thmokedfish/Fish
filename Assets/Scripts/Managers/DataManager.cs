@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class DataManager : MonoBehaviour
+public class DataManager //: MonoBehaviour
 {
     public static DataManager Instance;
+    static DataManager()
+    {
+        Instance = new DataManager();
+    }
     public HashSet<string> capturedNameSet;//用于ui，存档，扫描判定等模块
     public Dictionary<string, FishDataBase> FishDataDictionary;
     public FishDataList LoadedData;
     public string LocalPath = "FishData/FishData.json";
     [SerializeField]private int LatestCount = 3;
     public Queue<FishData> LatestCaptured= new Queue<FishData>(3);
-
+    /*
     private void Awake()
     {
         if (Instance == null)
@@ -24,9 +28,11 @@ public class DataManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 
-   public void Init()
+    private DataManager() { }
+
+    public void Init()
     {
         LoadJson();
         InitDataDic();
