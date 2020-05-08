@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     public GameObject EscPanel;
     public Slider slider;
+    public GameObject player;
 
     private Stack<GameObject> UIPanels = new Stack<GameObject>();
     public static UIManager Instance;
@@ -27,6 +28,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
+        slider.value = -(float)player.transform.position.y/ 400f;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (UIPanels.Count == 0)
