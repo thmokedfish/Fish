@@ -42,7 +42,6 @@ public class LatelyFishPanel : MonoBehaviour
         {
             if (i <0) { break; }
             CapturedArray[i] = data;
-            Debug.Log(i);
             i--;
         }
 
@@ -54,7 +53,6 @@ public class LatelyFishPanel : MonoBehaviour
     }
     public void FishInfoButton_OnClick(int buttonIndex)
     {
-        Debug.Log(buttonIndex);
         UIManager.Instance.SetPanelActive(InfoPanel);
         infoText.text = CapturedArray[buttonIndex].info;
     }

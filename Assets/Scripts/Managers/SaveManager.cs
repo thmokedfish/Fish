@@ -57,7 +57,7 @@ public class SaveManager:MonoBehaviour
         HashSet<string> nameHashSet = new HashSet<string>();
         for (int i = 0; i < loadedNames.Length; i++)
         {
-            Debug.Log("load " + loadedNames[i]);
+           // Debug.Log("load " + loadedNames[i]);
             if(loadedNames[i]==null)
             {
                 continue;
@@ -82,7 +82,7 @@ public class SaveManager:MonoBehaviour
         int i = 0;
         foreach(string name in set)
         {
-            Debug.Log("save "+name);
+           // Debug.Log("save "+name);
             save[i] = name;
             i++;
         }

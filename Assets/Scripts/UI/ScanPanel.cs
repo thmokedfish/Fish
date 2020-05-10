@@ -60,7 +60,7 @@ public class ScanPanel : MonoBehaviour
         int i=Random.Range(0, DataManager.Instance.LoadedData.datalist.Length);
         target.text = DataManager.Instance.LoadedData.datalist[i].briefInfo;
         targetID = DataManager.Instance.LoadedData.datalist[i].ID;
-        targetDepth.text = DataManager.Instance.LoadedData.datalist[i].depth.ToString();
+        targetDepth.text = (DataManager.Instance.LoadedData.datalist[i].depth+1).ToString();
     }
     void AnimaFalse()
     {
