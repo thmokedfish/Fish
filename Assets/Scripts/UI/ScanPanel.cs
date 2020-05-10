@@ -14,9 +14,10 @@ public class ScanPanel : MonoBehaviour
     public Text targetDepth;
     public Image info;
     public Text fishName;
-    int targetID;
+    int targetID; 
     private void Start()
     {
+        EventManager.Instance.AddReferenceEvents("FirstlyScaned", ShowFirstCapture);
         EventManager.Instance.AddValueChangeEvent("OnScanValueChange", SetScanCircle);
         EventManager.Instance.AddReferenceEvents("OnScanFinish", ShowFishInfo);
         RefreshTarget();
@@ -30,12 +31,6 @@ public class ScanPanel : MonoBehaviour
     {
         FishData data =fishData  as FishData;
         NameText.text = data.briefInfo;
-        if (!DataManager.Instance.capturedNameSet.Contains(data.name))
-        {
-            fishName.text = data.briefInfo;
-            info.gameObject.SetActive(true);
-            Invoke("InfoOver", 2.0f);
-        }
         if (data.ID == targetID)
         {
             task.gameObject.SetActive(false);
@@ -44,6 +39,14 @@ public class ScanPanel : MonoBehaviour
             RefreshTarget();
         }
         InfoText.text = data.info;
+    }
+
+    void ShowFirstCapture(object Fishdata)
+    {
+        FishData data = Fishdata as FishData;
+        fishName.text = data.briefInfo;
+        info.gameObject.SetActive(true);
+        Invoke("InfoOver", 2.0f);
     }
     void FinishTask()
     {

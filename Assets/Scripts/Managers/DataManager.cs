@@ -43,7 +43,11 @@ public class DataManager //: MonoBehaviour
     private void AddCapturedFish(object fishData)
     {
         FishData data = fishData as FishData;
-        capturedNameSet.Add(data.name);
+       bool isFirst= capturedNameSet.Add(data.name);
+        if(isFirst)
+        {
+            EventManager.Instance.InvokeReferenceEvents("FirstlyScaned", data);
+        }
         LatestCaptured.Enqueue(data);
         if(LatestCaptured.Count>LatestCount)
         {
