@@ -12,6 +12,8 @@ public class ScanPanel : MonoBehaviour
     public Image taskFinish;
     public Text target;
     public Text targetDepth;
+    public Image info;
+    public Text fishName;
     int targetID;
     private void Start()
     {
@@ -28,6 +30,12 @@ public class ScanPanel : MonoBehaviour
     {
         FishData data =fishData  as FishData;
         NameText.text = data.briefInfo;
+        if (!DataManager.Instance.capturedNameSet.Contains(data.name))
+        {
+            fishName.text = data.briefInfo;
+            info.gameObject.SetActive(true);
+            Invoke("InfoOver", 2.0f);
+        }
         if (data.ID == targetID)
         {
             task.gameObject.SetActive(false);
@@ -54,5 +62,9 @@ public class ScanPanel : MonoBehaviour
     void AnimaFalse()
     {
         task.GetComponent<Animator>().enabled = false;
+    }
+    void InfoOver()
+    {
+        info.gameObject.SetActive(false);
     }
 }
