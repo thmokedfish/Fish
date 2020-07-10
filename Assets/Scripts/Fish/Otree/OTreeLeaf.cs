@@ -5,9 +5,10 @@ using UnityEngine;
 public class OTreeLeaf :OTreeNode
 {
     public List<FishMove> fishes;
+    public OTreeLeaf Next;
+    public OTreeLeaf Prev;
     public OTreeLeaf(Vector3 center, float halfWidth):base(center,halfWidth)
     {
         fishes = new List<FishMove>();
     }
-
 }

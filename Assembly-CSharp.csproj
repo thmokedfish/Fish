@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Fish\FishSpawner.cs" />
     <Compile Include="Assets\Scripts\Fish\FollowFishMove.cs" />
     <Compile Include="Assets\Scripts\Fish\Otree\FishObj.cs" />
+    <Compile Include="Assets\Scripts\Fish\Otree\NodePool.cs" />
     <Compile Include="Assets\Scripts\Fish\Otree\OTreeLeaf.cs" />
     <Compile Include="Assets\Scripts\Fish\Otree\OTreeManager.cs" />
     <Compile Include="Assets\Scripts\Fish\Otree\OTreeNode.cs" />
@@ -94,9 +95,10 @@
     <Compile Include="Assets\Scripts\Managers\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SaveManager.cs" />
+    <Compile Include="Assets\Scripts\Others\GameObjectPool.cs" />
     <Compile Include="Assets\Scripts\Others\JsonReader.cs" />
     <Compile Include="Assets\Scripts\Others\Move.cs" />
-    <Compile Include="Assets\Scripts\Others\Pool.cs" />
+    <Compile Include="Assets\Scripts\Others\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Others\PostEffect.cs" />
     <Compile Include="Assets\Scripts\Others\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\Others\Test.cs" />

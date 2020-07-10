@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OTreeParent :OTreeNode
 {
+    public OTreeParent() : base(){ }
     public OTreeParent(Vector3 center, float halfWidth):base(center,halfWidth)
     {
         childs = new OTreeNode[8];

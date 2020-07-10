@@ -16,6 +16,11 @@ public class OTreeNode
     *        X递增
     *       
     */
+    public OTreeNode()
+    {
+        Center = Vector3.zero;
+        HalfWidth = 0;
+    }
     public OTreeNode(Vector3 center,float halfWidth)//初始化一个无子结点的结点
     {
         Center = center;
@@ -28,5 +33,10 @@ public class OTreeNode
             return null;
         }
         return childs[i];
+    }
+    public void Set(float halfWidth,Vector3 center)
+    {
+        this.HalfWidth = halfWidth;
+        this.Center = center;
     }
 }
