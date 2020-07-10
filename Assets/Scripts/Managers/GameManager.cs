@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     }
     void InitializeByOrder()
     {
-        SaveManager.Instance.Init();
-        FishSpawner.Instance.Init();
+        //SaveManager.Instance.Init();
+        //FishSpawner.Instance.Init();
         BoidsManager.Instance.Init();
     }
 }

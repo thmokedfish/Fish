@@ -21,8 +21,6 @@ public class EventManager
     }
     private EventManager()
     {
-        ValueChangeEvents = new Dictionary<string, OnValueChange>();
-        ReferenceEvents = new Dictionary<string, ReferenceEvent>();
     }
 
     private Dictionary<string, OnValueChange> ValueChangeEvents;
@@ -31,6 +29,8 @@ public class EventManager
 
     public void Init()
     {
+        ValueChangeEvents = new Dictionary<string, OnValueChange>();
+        ReferenceEvents = new Dictionary<string, ReferenceEvent>();
     }
     //约定:传入的参数在0-1之间
     public void AddValueChangeEvent(string key,OnValueChange val)

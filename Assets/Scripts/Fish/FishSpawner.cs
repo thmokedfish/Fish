@@ -30,7 +30,7 @@ public class FishSpawner : MonoBehaviour
     private List<Transform> parents = new List<Transform>();
     public FishMove targetPrefab; //用于传递给pool
 
-    private BoidSettings settings;
+    //private BoidSettings settings;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class FishSpawner : MonoBehaviour
 
     public void Init()
     {
-        settings = BoidsManager.Instance.settings;
+       // settings = BoidsManager.Instance.settings;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         LoadedData = DataManager.Instance.LoadedData;
@@ -219,7 +219,7 @@ public class FishSpawner : MonoBehaviour
             //不加入深度，若加入则去掉注释
             //fish.transform.parent = parents[data.depth];
             fish.data = data;
-            fish.Init(settings);
+            //fish.Init(settings);
             pos += new Vector3(Random.value, Random.Range(-1, 1), Random.Range(-1, 1)) * fishInterval;
         }
     }

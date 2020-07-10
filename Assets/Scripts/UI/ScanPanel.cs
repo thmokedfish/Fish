@@ -14,7 +14,8 @@ public class ScanPanel : MonoBehaviour
     public Text targetDepth;
     public Image info;
     public Text fishName;
-    int targetID; 
+    int targetID;
+
     private void Start()
     {
         EventManager.Instance.AddReferenceEvents("FirstlyScaned", ShowFirstCapture);

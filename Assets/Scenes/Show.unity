@@ -1459,6 +1459,21 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5250764814529789222, guid: 68adc7f067de2c744b069cd0b653e954,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793303214997862902, guid: 68adc7f067de2c744b069cd0b653e954,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 170.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793303214997862902, guid: 68adc7f067de2c744b069cd0b653e954,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1033.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68adc7f067de2c744b069cd0b653e954, type: 3}
 --- !u!1 &1374138292
@@ -2316,7 +2331,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 103.69998, y: 21.954987}
-  m_SizeDelta: {x: 909.4, y: 149.25}
+  m_SizeDelta: {x: 1033.8, y: 170.05}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2083211557
 MonoBehaviour:

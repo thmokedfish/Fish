@@ -8,7 +8,7 @@ public class ResetFish : MonoBehaviour
     {
         if(other.tag=="Fish")
         {
-            Debug.Log("reset");
+           // Debug.Log("reset");
             FishSpawner.Instance.ReSetting(other.GetComponent<FishMove>());
         }
     }

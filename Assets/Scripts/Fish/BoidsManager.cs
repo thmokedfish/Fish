@@ -23,8 +23,23 @@ public class BoidsManager : MonoBehaviour
     }
     public void Init()
     {
-        startFishes = FishSpawner.Instance.AllFishes;
-        fishes = startFishes.ToArray();
+        if (FishSpawner.Instance)
+        {
+            startFishes = FishSpawner.Instance.AllFishes;
+        }
+        if (startFishes == null)
+        {
+            Debug.LogError("fishes is null!");
+            fishes = GameObject.FindObjectsOfType<FishMove>();
+        }
+        else
+        {
+            fishes = startFishes.ToArray();
+        }
+        for (int i=0;i<fishes.Length;i++)
+        {
+            fishes[i].Init(settings);
+        }
     }
 
     void Update()
@@ -34,11 +49,6 @@ public class BoidsManager : MonoBehaviour
 
     void UpdateBoids()
     {
-        if (fishes == null) 
-        {
-            Debug.LogError("fishes is null!");
-            return;  
-        }
         int num= fishes.Length;
         BoidData[] boidData = new BoidData[num];
         for (int i = 0; i < num; i++)
