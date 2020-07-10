@@ -6,19 +6,19 @@ public class OTreeManager
 {
     public  const  int MAX_COUNT = 32;
     public float MaxWidth;
-    public float Center;
+    public Vector3 CenterPoint;
     private OTreeNode root;
-    private ObjectPool<OTreeParent> parentPool;
-    private ObjectPool<OTreeLeaf> leafPool;
+    private NodePool<OTreeParent> parentPool;//ObjectPool<OTreeParent> parentPool;
+    private NodePool<OTreeLeaf> leafPool;
     public OTreeManager()
     {
-        parentPool = new ObjectPool<OTreeParent>(BuildParent, InitNode);
+        parentPool = new NodePool<OTreeParent>(BuildParent);// new ObjectPool<OTreeParent>(BuildParent, InitNode);
+        leafPool = new NodePool<OTreeLeaf>(BulidLeaf);
         InitTree();
     }
     private void InitTree()
     {
-        OTreeLeaf leaf = leafPool.Spawn();
-        leaf.Set()
+        OTreeLeaf leaf = leafPool.Produce(MaxWidth, CenterPoint);
         root = leaf;
         CheckFull(leaf);
     }
@@ -26,24 +26,32 @@ public class OTreeManager
     {
         return new OTreeParent();
     }
+    private OTreeLeaf BuildLeaf()
+    {
+        return new OTreeLeaf();
+    }
 
     private void InitNode(OTreeNode node)
     {
 
     }
 
+    //替换结点
+    //为新父节点添加孩子
+    //将原有的fish下发给孩子
     private OTreeParent Split(OTreeLeaf node)
     {
         float width = node.HalfWidth;
         Vector3 point = node.Center;
-        OTreeParent cur = parentPool.Spawn();
+        OTreeParent cur = parentPool.Produce(width,point);
         List<FishMove> fishes = node.fishes;
         SetChild(cur);
-        
+        //下发
         leafPool.Despawn(node);
+        return cur;
     }
-
-    private void SetChild(OTreeParent parent)//交给manager从池中取子结点初始化
+    //从池中取子结点初始化
+    private void SetChild(OTreeParent parent)
     {
 
     }
@@ -55,6 +63,8 @@ public class OTreeManager
     {
 
     }
+
+    //check 满则Split
     private void CheckFull(OTreeLeaf leaf)
     {
         if(leaf.Count<MAX_COUNT)//不需要分裂

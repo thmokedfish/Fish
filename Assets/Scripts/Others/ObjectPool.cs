@@ -9,7 +9,7 @@ public class ObjectPool<T>
     public delegate void InitDelegate(T item);
     private event ConstructDelegate myConstruct;
     private event InitDelegate myInit;
-    public int maxCount { get; }
+    public int maxCount { get; private set; }
     public int ActiveCount { get; private set; }
 
     private List<T> InactiveList = new List<T>();
