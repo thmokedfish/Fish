@@ -23,6 +23,7 @@ public class NodePool<T> where T:OTreeNode
 
     public void Despawn(T target)
     {
+        target.childs = null;
         pool.Despawn(target);
     }
 }

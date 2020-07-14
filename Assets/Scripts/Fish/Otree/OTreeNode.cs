@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class OTreeNode
 {
-    public int Count;
+    public int FishCount;
     public float HalfWidth;
     public Vector3 Center;
-    public OTreeNode[] childs;//叶子节点为null
+    protected OTreeNode[] childs;//叶子节点为null
    /*下层0-3 上层4-7 
     * 
     *       ↑2 3
@@ -26,14 +26,8 @@ public class OTreeNode
         Center = center;
         HalfWidth = halfWidth;
     }
-    public OTreeNode GetChild(int i)
-    {
-        if(childs==null)
-        {
-            return null;
-        }
-        return childs[i];
-    }
+    
+    public bool IsLeaf { get { return childs == null; } }
     public void Set(float halfWidth,Vector3 center)
     {
         this.HalfWidth = halfWidth;

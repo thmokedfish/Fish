@@ -11,4 +11,12 @@ public class OTreeParent :OTreeNode
         float width = HalfWidth / 2;
       //  childs[0] = new OTreeLeaf()
     }
+    public OTreeNode GetChild(int i)
+    {
+        if (childs == null)
+        {
+            return null;
+        }
+        return childs[i];
+    }
 }
