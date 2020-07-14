@@ -13,4 +13,11 @@ public class OTreeLeaf :OTreeNode
     {
         fishes = new List<FishMove>();
     }
+    public override void Reset()
+    {
+        base.Reset();
+        fishes.Clear();
+        Next = null;
+        Prev = null;
+    }
 }

@@ -6,6 +6,7 @@ public class OTreeManager
     //首先通过链表遍历叶子 检查每条鱼并将鱼放入正确的结点
     //完成后再动态调整树的结构
     //不要一边遍历鱼一遍调整 变动的结构会导致出错
+    //初始化也是 先插入所有鱼 再调整树结构
     public const int MAX_COUNT = 8;
     public float MaxWidth;
     public Vector3 CenterPoint;
@@ -21,9 +22,8 @@ public class OTreeManager
     }
     private void InitTree()
     {
-        OTreeLeaf leaf = leafPool.Produce(MaxWidth, CenterPoint);
-        root = leaf;
-        CheckTreeSplit(leaf);
+        root = leafPool.Produce(MaxWidth, CenterPoint,null);
+        CheckTreeSplit(root);
     }
     private OTreeParent BuildParent()
     {
@@ -32,12 +32,6 @@ public class OTreeManager
     private OTreeLeaf BuildLeaf()
     {
         return new OTreeLeaf();
-    }
-
-    private void InitNode(OTreeNode node)
-    {
-
-
     }
 
     public void UpdateTree()
@@ -57,9 +51,10 @@ public class OTreeManager
         //记录原叶子中的前后指针
         OTreeLeaf prev = leaf.Prev;
         OTreeLeaf next = leaf.Next;
+        OTreeParent parent = leaf.Parent;
         leafPool.Despawn(leaf);
 
-        OTreeParent cur = parentPool.Produce(width,point);
+        OTreeParent cur = parentPool.Produce(width,point,parent);
         if(ReferenceEquals(leafsHead,leaf))
         {
             //转交leaf头至leaf分裂后的一个子结点
@@ -71,26 +66,31 @@ public class OTreeManager
     }
     //从池中取子结点初始化————
     //用指针将取出的叶子串起来 顺序无所谓
-    private void SetChild(OTreeParent parent)
+    private void SetChild(OTreeParent parent,OTreeLeaf prev,OTreeLeaf next)
     {
     }
-    public void FindAndInsert(FishMove fish)
+
+
+
+    //插入鱼
+    public bool FindAndInsert(FishMove fish,OTreeNode start)
     {
         Vector3 pos=fish.position;
         Vector3 center;
-        OTreeNode node = root;
+        OTreeNode node = start;
         if(!inRange(pos,node))
         {
-            Debug.Log("out of root");
-            return;
+            Debug.Log("out of start");
+            return false;
         }
         //ok 在根节点范围内
         while(true)
         {
+            ++node.FishCount; 
             if (node.IsLeaf) //找到叶子结点
             {
                 Insert(fish, (OTreeLeaf)node);
-                break; 
+                return true;
             }
             //不是叶子 检查在哪个子结点
             int index = 0;//参考OTreeNode注明的index顺序
@@ -122,11 +122,32 @@ public class OTreeManager
         }
          return false; 
     }
-    public void CheckFishPos(OTreeNode node,FishMove fish)//判断是否需要转换结点。若是，调用FindAndInsert
+    //通过leaf链表调用 
+    //判断是否需要转换结点。若是，向上寻找直到确认在某个父节点范围内，然后再向下寻找
+    public void CheckFishPos(OTreeNode node,FishMove fish)
     {
         if(inRange(fish.position,node))
         { return; }
-        FindAndInsert(fish);
+        node.FishCount--;
+        OTreeParent cur = node.Parent;
+        while (true)
+        {
+            //cur为空 则上个cur为root 也就是在root的范围内没找到
+            if(cur==null)
+            {
+                Debug.LogError("not find from root");
+            }
+            --cur.FishCount;//不管在不在里面都要减 因为FindAndInsert从start开始++，而如果cur是start，为了让FishCount保持不变，要先--
+            if (inRange(fish.position, cur))
+            {
+                FindAndInsert(fish, cur);
+            }
+            else
+            {
+                cur = cur.Parent;
+            }
+            
+        }
     }
 
     /*
@@ -150,24 +171,24 @@ public class OTreeManager
     }
     */
 
-    private void CheckTreeSplit(OTreeNode node)
+    private void CheckTreeSplit(OTreeNode start)
     {
         OTreeParent parent;
-        if (node.IsLeaf)
+        if (start.IsLeaf)
         {
-            if (node.FishCount < MAX_COUNT)//不需要分裂
+            if (start.FishCount < MAX_COUNT)//不需要分裂
             {
                 return;
             }
-            parent = Split((OTreeLeaf)node);
-            if (ReferenceEquals(node, root))
+            parent = Split((OTreeLeaf)start);
+            if (ReferenceEquals(start, root))
             {
                 root = parent;
             }
         }
         else
         {
-            parent = node as OTreeParent;
+            parent = start as OTreeParent;
         }
         for (int i = 0; i < MAX_COUNT; i++)
         {

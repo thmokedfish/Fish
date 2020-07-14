@@ -14,16 +14,16 @@ public class NodePool<T> where T:OTreeNode
     {
         pool = new ObjectPool<T>(ctor, null, maxCount);
     }
-    public T Produce(float halfWidth,Vector3 center)
+    public T Produce(float halfWidth,Vector3 center,OTreeParent parent)
     {
         T item=pool.Spawn();
-        item.Set(halfWidth, center);
+        item.Set(halfWidth, center,parent);
         return item;
     }
 
     public void Despawn(T target)
     {
-        target.childs = null;
+        target.Reset();
         pool.Despawn(target);
     }
 }
